@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0345f6968f9c4241959624889b545dd, type: 3}
+  m_Name: thisproject
+  m_EditorClassIdentifier: 
+  Entities:
+  - <Name>k__BackingField: dropSound
+    <ID>k__BackingField: 1073741837
+    MulticlipsPlayMode: 2
+    Clips:
+    - AudioClip: {fileID: 8300000, guid: 4825aa3b41361d049bfd4f0e57b28be9, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 22.745
+      EndPosition: 2.085
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: a644044edb0298543ad5dae666c013f6, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0.13
+      EndPosition: 8.346
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: a83eea0c2a1d47f41896c08691046a34, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0.104
+      EndPosition: 0.23
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
+    <MasterVolume>k__BackingField: 1
+    <Loop>k__BackingField: 0
+    <SeamlessLoop>k__BackingField: 0
+    <TransitionTime>k__BackingField: 0
+    <SpatialSetting>k__BackingField: {fileID: 0}
+    <Priority>k__BackingField: 128
+    <Pitch>k__BackingField: 1
+    <PitchRandomRange>k__BackingField: 0
+    <VolumeRandomRange>k__BackingField: 0
+    <RandomFlags>k__BackingField: 0
+    SeamlessTransitionType: 0
+    TransitionTempo:
+      BPM: 0
+      Beats: 0
+    SnapToFullVolume: 0
+  <AssetName>k__BackingField: thisproject
+  _assetGUID: 69a9d3c1875e8454a8a27644e99a1c47
