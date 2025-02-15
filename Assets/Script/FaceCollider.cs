@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.VFX;
 
 public class FaceCollider : MonoBehaviour
 {
@@ -9,7 +11,40 @@ public class FaceCollider : MonoBehaviour
     private bool hitDetected = false;
     public LayerMask groundLayer;
     public GameObject vfx;
+    public UnityEvent<string> OnFaceDetected;
 
+    private NormalVector normVec;
+
+    public Sprite spriteRight;
+    public Sprite spriteLeft;
+    public Sprite spriteTop;
+    public Sprite spriteBottom;
+    public Sprite spriteFront;
+    public Sprite spriteBack;
+    public enum NormalVector
+    {
+        right,
+        left,
+        top,
+        bottom,
+        front,
+        back,
+        Unknown
+    }
+
+    private Dictionary<NormalVector, Sprite> faceTex;
+    private void Start()
+    {
+        faceTex = new Dictionary<NormalVector, Sprite>()
+        {
+            { NormalVector.right,spriteRight },
+            {NormalVector.left,spriteLeft },
+            {NormalVector.top,spriteTop },
+            {NormalVector.bottom,spriteBottom },
+            {NormalVector.front,spriteFront },
+            {NormalVector.back, spriteBack }
+        };
+    }
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.contacts[0];
@@ -17,14 +52,24 @@ public class FaceCollider : MonoBehaviour
         hitNormal = contact.normal;
         hitDetected = true;
 
-
-        string face = GetColliderFace(hitNormal, transform);
-        Vector3 faceDirection = GetFaceDirection(face);
+        NormalVector face = GetColliderFace(hitNormal, transform);
+        Vector3 faceDirection = GetFaceDirection(normVec);
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
 
         Debug.Log(face);
+        if (TryGetComponent<VisualEffect>(out VisualEffect vfx))
+        {
+            Sprite finalSprite = GetSprite(face);
+            vfx.SetTexture("diceNumTex", finalSprite.texture);
+        }
+
         CameraShakeEvent.TriggerShake(1, .25f);
-        ObjctPlTrnsfrm.SpawnObject(vfx, centerOfFace,Quaternion.identity);
+        ObjctPlTrnsfrm.SpawnObject(vfx.gameObject, centerOfFace, Quaternion.identity);
+    }
+
+    private Sprite GetSprite(NormalVector face)
+    {
+        return faceTex.TryGetValue(face, out Sprite sprite) ? sprite : null;
     }
     void DetectFace()
     {
@@ -37,37 +82,37 @@ public class FaceCollider : MonoBehaviour
             hitNormal = hit.normal;
             hitDetected = true;
 
-            string face = GetColliderFace(hit.normal, transform);
+            NormalVector face = GetColliderFace(hit.normal, transform);
             Debug.Log("Hit face: " + face);
         }
     }
-    Vector3 GetFaceDirection(string face)
+    Vector3 GetFaceDirection(NormalVector norm)
     {
-        switch (face)
+        switch (norm)
         {
-            case "Right (+X)": return transform.right;
-            case "Left (-X)": return -transform.right;
-            case "Top (+Y)": return transform.up;
-            case "Bottom (-Y)": return -transform.up;
-            case "Front (+Z)": return transform.forward;
-            case "Back (-Z)": return -transform.forward;
+            case NormalVector.right: return transform.right;
+            case NormalVector.left: return -transform.right;
+            case NormalVector.top: return transform.up;
+            case NormalVector.bottom: return -transform.up;
+            case NormalVector.front: return transform.forward;
+            case NormalVector.back: return -transform.forward;
             default: return Vector3.zero;
         }
     }
 
-    string GetColliderFace(Vector3 normal,Transform cubeTrans)
+
+    NormalVector GetColliderFace(Vector3 normal, Transform cubeTrans)
     {
         Vector3 localNormal = cubeTrans.InverseTransformDirection(normal);
-        if (Vector3.Dot(localNormal, Vector3.right) > 0.7f) return "Right (+X)4";
-        if (Vector3.Dot(localNormal, Vector3.left) > 0.7f) return "Left (-X)3";
-        if (Vector3.Dot(localNormal, Vector3.up) > 0.7f) return "Top (+Y)6";
-        if (Vector3.Dot(localNormal, Vector3.down) > 0.7f) return "Bottom (-Y)1";
-        if (Vector3.Dot(localNormal, Vector3.forward) > 0.7f) return "Front (+Z)5";
-        if (Vector3.Dot(localNormal, Vector3.back) > 0.7f) return "Back (-Z)2";
+        if (Vector3.Dot(localNormal, Vector3.right) > 0.7f) return NormalVector.right;
+        if (Vector3.Dot(localNormal, Vector3.left) > 0.7f) return NormalVector.left;
+        if (Vector3.Dot(localNormal, Vector3.up) > 0.7f) return NormalVector.top;
+        if (Vector3.Dot(localNormal, Vector3.down) > 0.7f) return NormalVector.bottom;
+        if (Vector3.Dot(localNormal, Vector3.forward) > 0.7f) return NormalVector.front;
+        if (Vector3.Dot(localNormal, Vector3.back) > 0.7f) return NormalVector.back;
 
-        return "Unknown";
+        return NormalVector.Unknown;
     }
-
     void OnDrawGizmos()
     {
         DrawGizmoArrow(transform.position, transform.right, Color.red, "Right (+X)");
@@ -79,7 +124,6 @@ public class FaceCollider : MonoBehaviour
         DrawGizmoArrow(transform.position, transform.forward, Color.blue, "Front (+Z)");
         DrawGizmoArrow(transform.position, -transform.forward, Color.blue, "Back (-Z)");
     }
-
     private void DrawGizmoArrow(Vector3 start, Vector3 direction, Color color, string label)
     {
         Gizmos.color = color;
@@ -100,4 +144,4 @@ public class FaceCollider : MonoBehaviour
         UnityEditor.Handles.Label(end, label, style);
     }
 }
-    
+
