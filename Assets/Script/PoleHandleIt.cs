@@ -22,16 +22,17 @@ public class PoleHandleIt : MonoBehaviour
         hitDetected = true;
 
 
-        string nearestFace = GetNearestFace(hitPoint, transform);
-        Vector3 faceDirection = GetFaceDirection(nearestFace); // Convert face name to direction
-        Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f); 
+        //  string nearestFace = GetNearestFace(hitPoint, transform);
         string face = GetColliderFace(hitNormal, transform);
+        Vector3 faceDirection = GetFaceDirection(face); // Convert face name to direction
+        Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
+        string faceNormal = GetFaceNormalDirection(centerOfFace, transform);
 
-        Debug.Log(GetNearestFace(hitPoint,transform));
+        Debug.Log(face);
         CameraShakeEvent.TriggerShake(1, .25f);
-        ObjctPlTrnsfrm.SpawnObject(vfx, centerOfFace,Quaternion.identity);
+        ObjctPlTrnsfrm.SpawnObject(vfx, centerOfFace, Quaternion.identity);
 
-       // Debug.Log("Collided with: " + collision.gameObject.name + " on face: " + face);
+        // Debug.Log("Collided with: " + collision.gameObject.name + " on face: " + face);
         //get the surface normal of the collider pole
         //if(pole face touch the terrain then destroy the pole
 
@@ -80,10 +81,10 @@ public class PoleHandleIt : MonoBehaviour
             default: return Vector3.zero; // Default case if something goes wrong
         }
     }
-    string GetNearestFace(Vector3 hitPoint, Transform cubeTransform)
+    /*string GetNearestFace(Vector3 hitPoint, Transform cubeTransform)
     {
         // Convert hit point to local space
-        Vector3 localPoint = cubeTransform.InverseTransformPoint(hitPoint);
+        Vector3 localPoint = cubeTransform.InverseTransformDirection(hitPoint);
 
         // Get the absolute distances to the center
         float absX = Mathf.Abs(localPoint.x);
@@ -103,17 +104,39 @@ public class PoleHandleIt : MonoBehaviour
         {
             return (localPoint.z > 0) ? "5 Front (+Z)" : "2 Back (-Z)";
         }
+    }*/
+    string GetFaceNormalDirection(Vector3 centerOfFace, Transform objTransform)
+    {
+        // Compute local direction from object center to face center
+        Vector3 localDirection = objTransform.InverseTransformPoint(centerOfFace).normalized;
+
+        // Check the dominant axis
+        if (Mathf.Abs(localDirection.x) > Mathf.Abs(localDirection.y) &&
+            Mathf.Abs(localDirection.x) > Mathf.Abs(localDirection.z))
+        {
+            return (localDirection.x > 0) ? "Right (+X)" : "Left (-X)";
+        }
+        else if (Mathf.Abs(localDirection.y) > Mathf.Abs(localDirection.x) &&
+                 Mathf.Abs(localDirection.y) > Mathf.Abs(localDirection.z))
+        {
+            return (localDirection.y > 0) ? "Top (+Y)" : "Bottom (-Y)";
+        }
+        else
+        {
+            return (localDirection.z > 0) ? "Front (+Z)" : "Back (-Z)";
+        }
     }
-    string GetColliderFace(Vector3 normal,Transform cubeTrans)
+
+    string GetColliderFace(Vector3 normal, Transform cubeTrans)
     {
         Vector3 localNormal = cubeTrans.InverseTransformDirection(normal);//Convert to Local Space. detect faces relative to the cube's orientation
-        //pag di natin kinonvert we still received the axis of the world space, youll always get the Top(+Y) result.
-        if (Vector3.Dot(localNormal, Vector3.right) > 0.7f) return "Right (+X)";
-        if (Vector3.Dot(localNormal, Vector3.left) > 0.7f) return "Left (-X)";
-        if (Vector3.Dot(localNormal, Vector3.up) > 0.7f) return "Top (+Y)";
-        if (Vector3.Dot(localNormal, Vector3.down) > 0.7f) return "Bottom (-Y)";
-        if (Vector3.Dot(localNormal, Vector3.forward) > 0.7f) return "Front (+Z)";
-        if (Vector3.Dot(localNormal, Vector3.back) > 0.7f) return "Back (-Z)";
+                                                                          //pag di natin kinonvert we still received the axis of the world space, youll always get the Top(+Y) result.
+        if (Vector3.Dot(localNormal, Vector3.right) > 0.7f) return "Right (+X)4";
+        if (Vector3.Dot(localNormal, Vector3.left) > 0.7f) return "Left (-X)3";
+        if (Vector3.Dot(localNormal, Vector3.up) > 0.7f) return "Top (+Y)6";
+        if (Vector3.Dot(localNormal, Vector3.down) > 0.7f) return "Bottom (-Y)1";
+        if (Vector3.Dot(localNormal, Vector3.forward) > 0.7f) return "Front (+Z)5";
+        if (Vector3.Dot(localNormal, Vector3.back) > 0.7f) return "Back (-Z)2";
 
         return "Unknown";
     }
@@ -174,4 +197,4 @@ public class PoleHandleIt : MonoBehaviour
         UnityEditor.Handles.Label(end, label, style);
     }
 }
-    
+

@@ -399,7 +399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254086649}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.31448233, y: 0, z: 0, w: 0.94926333}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -623,8 +623,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cFreeLook: {fileID: 1936621314}
   collisionSound:
-    ID: 1073741837
-    _sourceAsset: {fileID: 11400000, guid: 69a9d3c1875e8454a8a27644e99a1c47, type: 2}
+    ID: 268435457
+    _sourceAsset: {fileID: 11400000, guid: 6ae8d9cb032bc1c40a8f7d4bd78c9337, type: 2}
     <DebugObject>k__BackingField: {fileID: 386552290}
 --- !u!4 &386552293
 Transform:
