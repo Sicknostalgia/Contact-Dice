@@ -27,10 +27,11 @@ public class PoleHandleIt : MonoBehaviour
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f); 
         string face = GetColliderFace(hitNormal, transform);
 
-        //Debug.Log("Normal: " + hitNormal);
+        Debug.Log(GetNearestFace(hitPoint,transform));
         CameraShakeEvent.TriggerShake(1, .25f);
         ObjctPlTrnsfrm.SpawnObject(vfx, centerOfFace,Quaternion.identity);
-        Debug.Log("Collided with: " + collision.gameObject.name + " on face: " + face);
+
+       // Debug.Log("Collided with: " + collision.gameObject.name + " on face: " + face);
         //get the surface normal of the collider pole
         //if(pole face touch the terrain then destroy the pole
 
@@ -90,17 +91,17 @@ public class PoleHandleIt : MonoBehaviour
         float absZ = Mathf.Abs(localPoint.z);
 
         // Compare which axis is dominant
-        if (absX > absY && absX > absZ) // X is dominant
+        if (absX >= absY && absX >= absZ) // X is dominant
         {
-            return (localPoint.x > 0) ? "Right (+X)" : "Left (-X)";
+            return (localPoint.x > 0) ? "4 Right (+X)" : "3 Left (-X)";
         }
         else if (absY > absX && absY > absZ) // Y is dominant
         {
-            return (localPoint.y > 0) ? "Top (+Y)" : "Bottom (-Y)";
+            return (localPoint.y > 0) ? "6 Top (+Y)" : "1 Bottom (-Y)";
         }
         else // Z is dominant
         {
-            return (localPoint.z > 0) ? "Front (+Z)" : "Back (-Z)";
+            return (localPoint.z > 0) ? "5 Front (+Z)" : "2 Back (-Z)";
         }
     }
     string GetColliderFace(Vector3 normal,Transform cubeTrans)
@@ -128,7 +129,7 @@ public class PoleHandleIt : MonoBehaviour
              // Draw the normal direction
              Gizmos.color = Color.blue;
              Gizmos.DrawRay(hitPoint, hitNormal * 0.5f);
-         }*/
+         }*//*
         if (hitDetected)
         {
             // Draw the contact point
@@ -141,6 +142,36 @@ public class PoleHandleIt : MonoBehaviour
 
             // Reset hitDetected for visualization refresh
             hitDetected = false;
-        }
+        }*/
+        // Set gizmo colors and draw lines for each face direction
+        DrawGizmoArrow(transform.position, transform.right, Color.red, "Right (+X)");
+        DrawGizmoArrow(transform.position, -transform.right, Color.red, "Left (-X)");
+
+        DrawGizmoArrow(transform.position, transform.up, Color.green, "Top (+Y)");
+        DrawGizmoArrow(transform.position, -transform.up, Color.green, "Bottom (-Y)");
+
+        DrawGizmoArrow(transform.position, transform.forward, Color.blue, "Front (+Z)");
+        DrawGizmoArrow(transform.position, -transform.forward, Color.blue, "Back (-Z)");
+    }
+
+    private void DrawGizmoArrow(Vector3 start, Vector3 direction, Color color, string label)
+    {
+        Gizmos.color = color;
+        Vector3 end = start + direction * 1.5f; // Scale the arrow length
+
+        // Draw the main line
+        Gizmos.DrawLine(start, end);
+
+        // Draw arrowhead
+        Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 150, 0) * Vector3.forward;
+        Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -150, 0) * Vector3.forward;
+        Gizmos.DrawLine(end, end + right * 0.3f);
+        Gizmos.DrawLine(end, end + left * 0.3f);
+
+        // Draw label
+        GUIStyle style = new GUIStyle();
+        style.normal.textColor = color;
+        UnityEditor.Handles.Label(end, label, style);
     }
 }
+    
