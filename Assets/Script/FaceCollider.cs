@@ -11,16 +11,16 @@ public class FaceCollider : MonoBehaviour
     private bool hitDetected = false;
     public LayerMask groundLayer;
     public GameObject vfx;
-    public UnityEvent<string> OnFaceDetected;
+   // public UnityEvent<string> OnFaceDetected;
 
     private NormalVector normVec;
 
-    public Sprite spriteRight;
-    public Sprite spriteLeft;
-    public Sprite spriteTop;
-    public Sprite spriteBottom;
-    public Sprite spriteFront;
-    public Sprite spriteBack;
+    public Texture2D Texture2DRight;
+    public Texture2D Texture2DLeft;
+    public Texture2D Texture2DTop;
+    public Texture2D Texture2DBottom;
+    public Texture2D Texture2DFront;
+    public Texture2D Texture2DBack;
     public enum NormalVector
     {
         right,
@@ -32,17 +32,17 @@ public class FaceCollider : MonoBehaviour
         Unknown
     }
 
-    private Dictionary<NormalVector, Sprite> faceTex;
+    private Dictionary<NormalVector, Texture2D> faceTex;
     private void Start()
     {
-        faceTex = new Dictionary<NormalVector, Sprite>()
+        faceTex = new Dictionary<NormalVector, Texture2D>()
         {
-            { NormalVector.right,spriteRight },
-            {NormalVector.left,spriteLeft },
-            {NormalVector.top,spriteTop },
-            {NormalVector.bottom,spriteBottom },
-            {NormalVector.front,spriteFront },
-            {NormalVector.back, spriteBack }
+            {NormalVector.right,Texture2DRight },
+            {NormalVector.left,Texture2DLeft },
+            {NormalVector.top,Texture2DTop },
+            {NormalVector.bottom,Texture2DBottom },
+            {NormalVector.front,Texture2DFront },
+            {NormalVector.back, Texture2DBack }
         };
     }
     private void OnCollisionEnter(Collision collision)
@@ -57,19 +57,23 @@ public class FaceCollider : MonoBehaviour
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
 
         Debug.Log(face);
-        if (TryGetComponent<VisualEffect>(out VisualEffect vfx))
+        if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
         {
-            Sprite finalSprite = GetSprite(face);
-            vfx.SetTexture("diceNumTex", finalSprite.texture);
+            Debug.Log("ey");
+            Texture2D finalTexture2D = GetTexture2D(face);
+        }
+        else
+        {
+            Debug.Log("null vfx");
         }
 
         CameraShakeEvent.TriggerShake(1, .25f);
         ObjctPlTrnsfrm.SpawnObject(vfx.gameObject, centerOfFace, Quaternion.identity);
     }
 
-    private Sprite GetSprite(NormalVector face)
+    private Texture2D GetTexture2D(NormalVector face)
     {
-        return faceTex.TryGetValue(face, out Sprite sprite) ? sprite : null;
+        return faceTex.TryGetValue(face, out Texture2D Texture2D) ? Texture2D : null;
     }
     void DetectFace()
     {

@@ -1475,7 +1475,7 @@ PrefabInstance:
     - target: {fileID: 8928159054878668680, guid: 8ef80e370f1d4034c89298ac84944e10,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.87
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 8928159054878668680, guid: 8ef80e370f1d4034c89298ac84944e10,
         type: 3}
@@ -1521,6 +1521,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: sparkCollisionVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928159054878668695, guid: 8ef80e370f1d4034c89298ac84944e10,
+        type: 3}
+      propertyPath: m_PropertySheet.m_NamedObject.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928159054878668695, guid: 8ef80e370f1d4034c89298ac84944e10,
+        type: 3}
+      propertyPath: m_PropertySheet.m_NamedObject.m_Array.Array.data[0].m_Name
+      value: diceNumTex
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928159054878668695, guid: 8ef80e370f1d4034c89298ac84944e10,
+        type: 3}
+      propertyPath: m_PropertySheet.m_NamedObject.m_Array.Array.data[0].m_Value
+      value: 
+      objectReference: {fileID: 2800000, guid: ef6433ecf78576f45901341fc39ac92c, type: 3}
+    - target: {fileID: 8928159054878668695, guid: 8ef80e370f1d4034c89298ac84944e10,
+        type: 3}
+      propertyPath: m_PropertySheet.m_NamedObject.m_Array.Array.data[0].m_Overridden
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1960,15 +1980,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   vfx: {fileID: 1834653803}
-  OnFaceDetected:
-    m_PersistentCalls:
-      m_Calls: []
-  spriteRight: {fileID: 0}
-  spriteLeft: {fileID: 0}
-  spriteTop: {fileID: 0}
-  spriteBottom: {fileID: 0}
-  spriteFront: {fileID: 0}
-  spriteBack: {fileID: 0}
+  Texture2DRight: {fileID: 2800000, guid: 714ce62937d0b41448f159ad2bc6be60, type: 3}
+  Texture2DLeft: {fileID: 2800000, guid: 30f6e69b93677114f9f2ac7c05787dd3, type: 3}
+  Texture2DTop: {fileID: 2800000, guid: 46a939e9bc5af43439bb33b54aec6519, type: 3}
+  Texture2DBottom: {fileID: 2800000, guid: 3d6dc7235679c2e44aeef6192b3c0796, type: 3}
+  Texture2DFront: {fileID: 2800000, guid: ce74b88d1fd043149950ff6803f28431, type: 3}
+  Texture2DBack: {fileID: 2800000, guid: 38e5a397666ea0146b995e01668418f4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
