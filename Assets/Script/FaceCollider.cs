@@ -53,6 +53,7 @@ public class FaceCollider : MonoBehaviour
         hitDetected = true;
 
         NormalVector face = GetColliderFace(hitNormal, transform);
+
         Vector3 faceDirection = GetFaceDirection(normVec);
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
 
@@ -61,6 +62,7 @@ public class FaceCollider : MonoBehaviour
         {
             Debug.Log("ey");
             Texture2D finalTexture2D = GetTexture2D(face);
+            vfxCom.SetTexture("MainTex", finalTexture2D);
         }
         else
         {
@@ -117,35 +119,72 @@ public class FaceCollider : MonoBehaviour
 
         return NormalVector.Unknown;
     }
-    void OnDrawGizmos()
+    /*    void OnDrawGizmos()
+        {
+            DrawGizmoArrow(transform.position, transform.right, Color.red, "Right (+X)");
+            DrawGizmoArrow(transform.position, -transform.right, Color.red, "Left (-X)");
+
+            DrawGizmoArrow(transform.position, transform.up, Color.green, "Top (+Y)");
+            DrawGizmoArrow(transform.position, -transform.up, Color.green, "Bottom (-Y)");
+
+            DrawGizmoArrow(transform.position, transform.forward, Color.blue, "Front (+Z)");
+            DrawGizmoArrow(transform.position, -transform.forward, Color.blue, "Back (-Z)");
+        }
+        private void DrawGizmoArrow(Vector3 start, Vector3 direction, Color color, string label)
+        {
+            Gizmos.color = color;
+            Vector3 end = start + direction * 1.5f; // Scale the arrow length
+
+            // Draw the main line
+            Gizmos.DrawLine(start, end);
+
+            // Draw arrowhead
+            Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 150, 0) * Vector3.forward;
+            Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -150, 0) * Vector3.forward;
+            Gizmos.DrawLine(end, end + right * 0.3f);
+            Gizmos.DrawLine(end, end + left * 0.3f);
+
+            // Draw label
+            GUIStyle style = new GUIStyle();
+            style.normal.textColor = color;
+            UnityEditor.Handles.Label(end, label, style);
+        }*/
+    private bool hasLogged = false;
+
+    void Update()
     {
-        DrawGizmoArrow(transform.position, transform.right, Color.red, "Right (+X)");
-        DrawGizmoArrow(transform.position, -transform.right, Color.red, "Left (-X)");
-
-        DrawGizmoArrow(transform.position, transform.up, Color.green, "Top (+Y)");
-        DrawGizmoArrow(transform.position, -transform.up, Color.green, "Bottom (-Y)");
-
-        DrawGizmoArrow(transform.position, transform.forward, Color.blue, "Front (+Z)");
-        DrawGizmoArrow(transform.position, -transform.forward, Color.blue, "Back (-Z)");
+        if(gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        {
+            if (rb.velocity.magnitude == 0 && !hasLogged)
+            {
+                Debug.Log(GetFaceDirection(normVec));
+                hasLogged = true;
+            }
+            if(rb.velocity.magnitude > 0)
+            {
+                hasLogged = false;
+            }
+        }
+        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
+        DrawArrow(transform.position, -transform.right, Color.red);  // Left (-X)
+        DrawArrow(transform.position, transform.up, Color.green);    // Top (+Y)
+        DrawArrow(transform.position, -transform.up, Color.green);   // Bottom (-Y)
+        DrawArrow(transform.position, transform.forward, Color.blue);// Front (+Z)
+        DrawArrow(transform.position, -transform.forward, Color.blue);// Back (-Z)
     }
-    private void DrawGizmoArrow(Vector3 start, Vector3 direction, Color color, string label)
-    {
-        Gizmos.color = color;
-        Vector3 end = start + direction * 1.5f; // Scale the arrow length
 
-        // Draw the main line
-        Gizmos.DrawLine(start, end);
+    private void DrawArrow(Vector3 start, Vector3 direction, Color color)
+    {
+        Vector3 end = start + direction * 1.5f; // Adjust arrow length
+
+        // Draw main line
+        Debug.DrawLine(start, end, color);
 
         // Draw arrowhead
         Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 150, 0) * Vector3.forward;
         Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -150, 0) * Vector3.forward;
-        Gizmos.DrawLine(end, end + right * 0.3f);
-        Gizmos.DrawLine(end, end + left * 0.3f);
-
-        // Draw label
-        GUIStyle style = new GUIStyle();
-        style.normal.textColor = color;
-        UnityEditor.Handles.Label(end, label, style);
+        Debug.DrawLine(end, end + right * 0.3f, color);
+        Debug.DrawLine(end, end + left * 0.3f, color);
     }
 }
 
