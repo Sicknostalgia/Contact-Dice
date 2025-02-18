@@ -11,9 +11,11 @@ public class FaceCollider : MonoBehaviour
     private bool hitDetected = false;
     public LayerMask groundLayer;
     public GameObject vfx;
-   // public UnityEvent<string> OnFaceDetected;
+    // public UnityEvent<string> OnFaceDetected;
+    public UnityEvent<int> OnDiceValue;
 
-    private NormalVector normVec;
+    public NumberCounter numberCounter;
+    public NormalVector normVec;
 
     public Texture2D Texture2DRight;
     public Texture2D Texture2DLeft;
@@ -45,6 +47,26 @@ public class FaceCollider : MonoBehaviour
             {NormalVector.back, Texture2DBack }
         };
     }
+    public int NumEnumChange(NormalVector normVec)
+    {
+        switch (normVec)
+        {
+            case NormalVector.right:
+                return 1;
+            case NormalVector.left:
+                return 2;
+            case NormalVector.front:
+                return 3;
+            case NormalVector.back:
+                return 4;
+            case NormalVector.top:
+                return 5;
+            case NormalVector.bottom:
+                return 6;
+            default: return 0;
+                
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.contacts[0];
@@ -52,11 +74,10 @@ public class FaceCollider : MonoBehaviour
         hitNormal = contact.normal;
         hitDetected = true;
 
+        numberCounter.Value = NumEnumChange(normVec);  //update value of dice number on UI
         NormalVector face = GetColliderFace(hitNormal, transform);
-
         Vector3 faceDirection = GetFaceDirection(normVec);
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
-
         Debug.Log(face);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
         {
@@ -75,7 +96,7 @@ public class FaceCollider : MonoBehaviour
 
     private Texture2D GetTexture2D(NormalVector face)
     {
-        return faceTex.TryGetValue(face, out Texture2D Texture2D) ? Texture2D : null;
+        return faceTex.TryGetValue(face, out Texture2D texture2D) ? texture2D : null;
     }
     void DetectFace()
     {
@@ -119,58 +140,58 @@ public class FaceCollider : MonoBehaviour
 
         return NormalVector.Unknown;
     }
-    /*    void OnDrawGizmos()
-        {
-            DrawGizmoArrow(transform.position, transform.right, Color.red, "Right (+X)");
-            DrawGizmoArrow(transform.position, -transform.right, Color.red, "Left (-X)");
+    void OnDrawGizmos()
+    {
+        DrawGizmoArrow(transform.position, transform.right, Color.red, "Right (+X)");
+        DrawGizmoArrow(transform.position, -transform.right, Color.red, "Left (-X)");
 
-            DrawGizmoArrow(transform.position, transform.up, Color.green, "Top (+Y)");
-            DrawGizmoArrow(transform.position, -transform.up, Color.green, "Bottom (-Y)");
+        DrawGizmoArrow(transform.position, transform.up, Color.green, "Top (+Y)");
+        DrawGizmoArrow(transform.position, -transform.up, Color.green, "Bottom (-Y)");
 
-            DrawGizmoArrow(transform.position, transform.forward, Color.blue, "Front (+Z)");
-            DrawGizmoArrow(transform.position, -transform.forward, Color.blue, "Back (-Z)");
-        }
-        private void DrawGizmoArrow(Vector3 start, Vector3 direction, Color color, string label)
-        {
-            Gizmos.color = color;
-            Vector3 end = start + direction * 1.5f; // Scale the arrow length
+        DrawGizmoArrow(transform.position, transform.forward, Color.blue, "Front (+Z)");
+        DrawGizmoArrow(transform.position, -transform.forward, Color.blue, "Back (-Z)");
+    }
+    private void DrawGizmoArrow(Vector3 start, Vector3 direction, Color color, string label)
+    {
+        Gizmos.color = color;
+        Vector3 end = start + direction * 1.5f; // Scale the arrow length
 
-            // Draw the main line
-            Gizmos.DrawLine(start, end);
+        // Draw the main line
+        Gizmos.DrawLine(start, end);
 
-            // Draw arrowhead
-            Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 150, 0) * Vector3.forward;
-            Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -150, 0) * Vector3.forward;
-            Gizmos.DrawLine(end, end + right * 0.3f);
-            Gizmos.DrawLine(end, end + left * 0.3f);
+        // Draw arrowhead
+        Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 150, 0) * Vector3.forward;
+        Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -150, 0) * Vector3.forward;
+        Gizmos.DrawLine(end, end + right * 0.3f);
+        Gizmos.DrawLine(end, end + left * 0.3f);
 
-            // Draw label
-            GUIStyle style = new GUIStyle();
-            style.normal.textColor = color;
-            UnityEditor.Handles.Label(end, label, style);
-        }*/
+        // Draw label
+        GUIStyle style = new GUIStyle();
+        style.normal.textColor = color;
+        UnityEditor.Handles.Label(end, label, style);
+    }
     private bool hasLogged = false;
 
     void Update()
     {
-        if(gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             if (rb.velocity.magnitude == 0 && !hasLogged)
             {
                 Debug.Log(GetFaceDirection(normVec));
                 hasLogged = true;
             }
-            if(rb.velocity.magnitude > 0)
+            if (rb.velocity.magnitude > 0)
             {
                 hasLogged = false;
             }
         }
-        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
-        DrawArrow(transform.position, -transform.right, Color.red);  // Left (-X)
-        DrawArrow(transform.position, transform.up, Color.green);    // Top (+Y)
-        DrawArrow(transform.position, -transform.up, Color.green);   // Bottom (-Y)
-        DrawArrow(transform.position, transform.forward, Color.blue);// Front (+Z)
-        DrawArrow(transform.position, -transform.forward, Color.blue);// Back (-Z)
+        /*        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
+                DrawArrow(transform.position, -transform.right, Color.red);  // Left (-X)
+                DrawArrow(transform.position, transform.up, Color.green);    // Top (+Y)
+                DrawArrow(transform.position, -transform.up, Color.green);   // Bottom (-Y)
+                DrawArrow(transform.position, transform.forward, Color.blue);// Front (+Z)
+                DrawArrow(transform.position, -transform.forward, Color.blue);// Back (-Z)*/
     }
 
     private void DrawArrow(Vector3 start, Vector3 direction, Color color)
