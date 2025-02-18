@@ -74,9 +74,9 @@ public class FaceCollider : MonoBehaviour
         hitNormal = contact.normal;
         hitDetected = true;
 
-        numberCounter.Value = NumEnumChange(normVec);  //update value of dice number on UI
-        NormalVector face = GetColliderFace(hitNormal, transform);
-        Vector3 faceDirection = GetFaceDirection(normVec);
+        NormalVector face = GetColliderFace(hitNormal, transform); //this calculate the final normal vector result, failed to reference this wont change your value on the following line
+        Vector3 faceDirection = GetFaceDirection(face);
+        numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
         Debug.Log(face);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
@@ -179,6 +179,7 @@ public class FaceCollider : MonoBehaviour
             if (rb.velocity.magnitude == 0 && !hasLogged)
             {
                 Debug.Log(GetFaceDirection(normVec));
+                numberCounter.Value = NumEnumChange(GetColliderFace(hitNormal,transform));  //equivalent to face
                 hasLogged = true;
             }
             if (rb.velocity.magnitude > 0)
