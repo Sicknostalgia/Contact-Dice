@@ -10,6 +10,7 @@ public class NumberCounter : MonoBehaviour
     public float Duration = 1f;
     public string NumberFormat;
     private int _value;
+    Vector3 originalScale;
     public int Value
     {
         get
@@ -25,6 +26,7 @@ public class NumberCounter : MonoBehaviour
     private Coroutine CountingCoroutine;
     private void Awake()
     {
+        originalScale = transform.localScale;
         if (TryGetComponent<TextMeshProUGUI>(out text))
         {
             Debug.Log("Theres text");
@@ -42,6 +44,8 @@ public class NumberCounter : MonoBehaviour
         }
         CountingCoroutine = StartCoroutine(CountText(newValue));
     }
+   
+
     private IEnumerator CountText(int newValue)
     {
         WaitForSeconds wait = new WaitForSeconds(1f / CountFPS);
@@ -66,7 +70,7 @@ public class NumberCounter : MonoBehaviour
                     previousValue = newValue;
                 }
                 text.SetText(previousValue.ToString(NumberFormat));
-                StartCoroutine(Scaling());
+                transform.DOPunchScale(new Vector3(.5f,.5f,0), .1f).OnComplete(() => transform.DOScale(originalScale, 0.1f));
                 yield return wait;
             }
         }
@@ -80,36 +84,10 @@ public class NumberCounter : MonoBehaviour
                     previousValue = newValue;
                 }
                 text.SetText(previousValue.ToString(NumberFormat));
-                StartCoroutine(Scaling());
+                transform.DOPunchScale(new Vector3(.5f, .5f, 0), .1f).OnComplete(() => transform.DOScale(originalScale, 0.1f));
                 yield return wait;
             }
         }
     }
-    private IEnumerator Scaling()
-    {
-        Vector3 originalScale = text.transform.localScale;
-        Vector3 targetScale = originalScale * 1.2f;
-
-        float duration = 0.1f;
-        float elapsedTime = 0f;
-
-        while(elapsedTime < duration)
-        {
-            text.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-
-        }
-        elapsedTime = 0f;
-/*
-        while (elapsedTime < duration)
-        {
-            text.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-*/
-        text.transform.localScale = originalScale;
-
-    }
+   
 }

@@ -94,10 +94,10 @@ MonoBehaviour:
   - title: Decal
     position:
       serializedVersion: 2
-      x: 3298
+      x: 3213
       y: -819
-      width: 1024
-      height: 1770
+      width: 844
+      height: 1865
     contents:
     - model: {fileID: 8926484042661615107}
       id: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 680
     y: -838
-    width: 3642
+    width: 3377
     height: 2280
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -6143,7 +6143,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614921}
       inputSlot: {fileID: 8926484042661615232}
-    position: {x: 3382.49, y: 652.4531}
+    position: {x: 3276, y: 673.6}
     expandedSlots: []
     expanded: 1
 --- !u!114 &8926484042661614921
@@ -8814,7 +8814,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615230}
       inputSlot: {fileID: 8926484042661615149}
-    position: {x: 4160, y: 176.8}
+    position: {x: 3273.5999, y: 311.19998}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661615230
@@ -8867,7 +8867,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 3324, y: 807}
+  m_UIPosition: {x: 3238, y: 822}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
