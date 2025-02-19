@@ -52,17 +52,17 @@ public class FaceCollider : MonoBehaviour
         switch (normVec)
         {
             case NormalVector.right:
-                return 1;
-            case NormalVector.left:
-                return 2;
-            case NormalVector.front:
                 return 3;
-            case NormalVector.back:
+            case NormalVector.left:
                 return 4;
-            case NormalVector.top:
+            case NormalVector.front:
+                return 2;
+            case NormalVector.back:
                 return 5;
-            case NormalVector.bottom:
+            case NormalVector.top:
                 return 6;
+            case NormalVector.bottom:
+                return 1;
             default: return 0;
                 
         }

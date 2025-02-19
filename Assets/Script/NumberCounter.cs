@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
+using DG.Tweening;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class NumberCounter : MonoBehaviour
 {
@@ -66,6 +66,8 @@ public class NumberCounter : MonoBehaviour
                     previousValue = newValue;
                 }
                 text.SetText(previousValue.ToString(NumberFormat));
+                StartCoroutine(Scaling());
+                yield return wait;
             }
         }
         else
@@ -78,8 +80,36 @@ public class NumberCounter : MonoBehaviour
                     previousValue = newValue;
                 }
                 text.SetText(previousValue.ToString(NumberFormat));
+                StartCoroutine(Scaling());
                 yield return wait;
             }
         }
+    }
+    private IEnumerator Scaling()
+    {
+        Vector3 originalScale = text.transform.localScale;
+        Vector3 targetScale = originalScale * 1.2f;
+
+        float duration = 0.1f;
+        float elapsedTime = 0f;
+
+        while(elapsedTime < duration)
+        {
+            text.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+
+        }
+        elapsedTime = 0f;
+/*
+        while (elapsedTime < duration)
+        {
+            text.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+*/
+        text.transform.localScale = originalScale;
+
     }
 }
