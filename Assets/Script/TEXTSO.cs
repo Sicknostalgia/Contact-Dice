@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "TextContainer/")]
+[CreateAssetMenu(menuName = "TextContainer/Result Text")]
 public class TEXTSO : ScriptableObject
 {
     [TextArea(5, 10)]
