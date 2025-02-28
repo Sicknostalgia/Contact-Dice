@@ -9,9 +9,9 @@ public class DisplayTextCtrler : MonoBehaviour
     [SerializeField] FaceCollider faceCol;
     [SerializeField] TEXTSO[] candidateText;
 
-    public void UpdatePara()
+    public void UpdatePara(FaceCollider.NormalVector nVecFaceCol)
     {
-        tmPro.text = ParaValue();
+        tmPro.text = ParaValue(nVecFaceCol);
     }
     string ReturnRandomPara(TEXTSO textSO)
     {
@@ -23,9 +23,9 @@ public class DisplayTextCtrler : MonoBehaviour
         }
         return "No text";
     }
-    string ParaValue()
+    string ParaValue(FaceCollider.NormalVector normVec)
     {
-        switch (faceCol.normVec)
+        switch (normVec)
         {
             case FaceCollider.NormalVector.right:
                 return ReturnRandomPara(candidateText[0]);

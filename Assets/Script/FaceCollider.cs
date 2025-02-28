@@ -202,7 +202,7 @@ public class FaceCollider : MonoBehaviour
             {
                 Debug.Log(GetFaceDirection(normVec));
                 numberCounter.Value = NumEnumChange(GetColliderFace(hitNormal,transform));  //equivalent to face
-                disCtrlr.UpdatePara();
+                disCtrlr.UpdatePara(normVec);
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
                 hasLogged = true;
