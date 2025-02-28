@@ -4,6 +4,7 @@ using TMPro;
 
 public class DisplayTextCtrler : MonoBehaviour
 {
+    [TextArea(5,10)]
     [SerializeField] TEXTSO textPara;
     [SerializeField] TextMeshProUGUI tmPro;
     [SerializeField] FaceCollider faceCol;

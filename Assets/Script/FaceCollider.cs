@@ -103,7 +103,6 @@ public class FaceCollider : MonoBehaviour
         Debug.Log(face);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
         {
-            Debug.Log("ey");
             Texture2D finalTexture2D = GetTexture2D(face);
             vfxCom.SetTexture("MainTex", finalTexture2D);
         }
@@ -200,9 +199,9 @@ public class FaceCollider : MonoBehaviour
         {
             if (rb.velocity.magnitude == 0 && !hasLogged)
             {
-                Debug.Log(GetFaceDirection(normVec));
                 NormalVector face = GetColliderFace(hitNormal, transform);
                 numberCounter.Value = NumEnumChange(face);  //equivalent to face
+                Debug.Log(GetFaceDirection(face));
                 disCtrlr.UpdatePara(face);
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
