@@ -201,8 +201,9 @@ public class FaceCollider : MonoBehaviour
             if (rb.velocity.magnitude == 0 && !hasLogged)
             {
                 Debug.Log(GetFaceDirection(normVec));
-                numberCounter.Value = NumEnumChange(GetColliderFace(hitNormal,transform));  //equivalent to face
-                disCtrlr.UpdatePara(normVec);
+                NormalVector face = GetColliderFace(hitNormal, transform);
+                numberCounter.Value = NumEnumChange(face);  //equivalent to face
+                disCtrlr.UpdatePara(face);
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
                 hasLogged = true;
