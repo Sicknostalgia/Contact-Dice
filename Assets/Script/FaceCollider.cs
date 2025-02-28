@@ -23,6 +23,7 @@ public class FaceCollider : MonoBehaviour
     public Texture2D Texture2DBottom;
     public Texture2D Texture2DFront;
     public Texture2D Texture2DBack;
+    [SerializeField] DisplayTextCtrler disCtrlr;
     public enum NormalVector
     {
         right,
@@ -33,10 +34,12 @@ public class FaceCollider : MonoBehaviour
         back,
         Unknown
     }
+    public TEXTSO textSO;
 
-    private Dictionary<NormalVector, Texture2D> faceTex;
+    public Dictionary<NormalVector, Texture2D> faceTex;
     private void Start()
     {
+        textSO.paragraphs = new string[(Random.Range(0, 1))];
         faceTex = new Dictionary<NormalVector, Texture2D>()
         {
             {NormalVector.right,Texture2DRight },
@@ -77,6 +80,7 @@ public class FaceCollider : MonoBehaviour
         NormalVector face = GetColliderFace(hitNormal, transform); //this calculate the final normal vector result, failed to reference this wont change your value on the following line
         Vector3 faceDirection = GetFaceDirection(face);
         numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
+        
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
         Debug.Log(face);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
@@ -180,6 +184,8 @@ public class FaceCollider : MonoBehaviour
             {
                 Debug.Log(GetFaceDirection(normVec));
                 numberCounter.Value = NumEnumChange(GetColliderFace(hitNormal,transform));  //equivalent to face
+                //here dialogue final value
+               // disCtrlr.ParagraphUpdate
                 hasLogged = true;
             }
             if (rb.velocity.magnitude > 0)
