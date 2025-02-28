@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb02414cfbb840044b68b1a1ccccfce2, type: 3}
   m_Name: Result4
   m_EditorClassIdentifier: 
-  paragraphs: []
+  paragraphs:
+  - Kape, kape ang sarap mag kape Oh yee!
+  - Ayain mo nalang si boss mo magkape, gaganda yung mood nyan.
+  - Trabaho konte,kape malala
+  - kakaantok makapagkape nga...kakapagod makapagkape nga... kakatamad makapagkape
+    nga...

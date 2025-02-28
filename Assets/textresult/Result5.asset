@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb02414cfbb840044b68b1a1ccccfce2, type: 3}
-  m_Name: Result3
+  m_Name: Result5
   m_EditorClassIdentifier: 
   paragraphs:
-  - Kayod Kalabaw! Para kanino ka kumakayod?
-  - Kayod Kalabaw! Para kanino ka kumakayod?
-  - Kung lamang ang may alam, eh masigasig din ang may utang.
-  - Puro ka kasi deserve mo yan, tingnan mo, deserve mo ring mag overtime.
-  - Overtime hanggang mag time over.
+  - Uy! Alam mo ba yung anu nya kanina umano, sa ano, at ano...
+  - Alam mo nakakatamad minsan gumawa ng ano nu? Uy pero kahit na ano paman maganda
+    parin yung ano...
+  - 'Bigyan kita ng topic mo mamaya sa trabaho: "Pano wag mangialam sa buhay ng iba?"'
+  - Isa pang magandang topic "Anu kaya kung mag tayo ng business "Mind your own"
+    business?"

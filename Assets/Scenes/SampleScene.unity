@@ -1527,11 +1527,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wag kana pumasok, ganun din naman.
+  m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f847f6d56fb40a0478975eb3e935fd4f, type: 2}
-  m_sharedMaterial: {fileID: 3656122430342228574, guid: f847f6d56fb40a0478975eb3e935fd4f,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1571,7 +1570,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -2627,6 +2626,7 @@ GameObject:
   - component: {fileID: 963349118}
   - component: {fileID: 963349117}
   - component: {fileID: 963349116}
+  - component: {fileID: 963349121}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2725,6 +2725,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &963349121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963349115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ad0f61e7052864fac8c93060853d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPara: {fileID: 11400000, guid: b8c592a55fe0804428de038e1a654d02, type: 2}
+  tmPro: {fileID: 652758001}
+  faceCol: {fileID: 8344526435792524697}
+  candidateText:
+  - {fileID: 11400000, guid: b8c592a55fe0804428de038e1a654d02, type: 2}
+  - {fileID: 11400000, guid: 10a9251b82a8b4243959f4e960045d6f, type: 2}
+  - {fileID: 11400000, guid: 2cf540cbb33a6f7488712cc45183a291, type: 2}
+  - {fileID: 11400000, guid: 6971f8e371fbd824c9a2de02e46ccafd, type: 2}
+  - {fileID: 11400000, guid: c7dc01333fbd3fb4fbe0493d1821e953, type: 2}
+  - {fileID: 11400000, guid: d34fd916e566cbd49ba4daadf447ab90, type: 2}
 --- !u!1 &969334499
 GameObject:
   m_ObjectHideFlags: 0
@@ -5616,6 +5638,8 @@ MonoBehaviour:
   Texture2DBottom: {fileID: 2800000, guid: 3d6dc7235679c2e44aeef6192b3c0796, type: 3}
   Texture2DFront: {fileID: 2800000, guid: ce74b88d1fd043149950ff6803f28431, type: 3}
   Texture2DBack: {fileID: 2800000, guid: 38e5a397666ea0146b995e01668418f4, type: 3}
+  disCtrlr: {fileID: 0}
+  textSO: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
