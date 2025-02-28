@@ -9,7 +9,11 @@ public class DisplayTextCtrler : MonoBehaviour
     [SerializeField] FaceCollider faceCol;
     [SerializeField] TEXTSO[] candidateText;
 
-    string ParagraphUpdate(TEXTSO textSO)
+    public void UpdatePara()
+    {
+        tmPro.text = ParaValue();
+    }
+    string ReturnRandomPara(TEXTSO textSO)
     {
         tmPro.text = string.Empty;
         if (textPara != null && textPara.paragraphs.Length > 0) //may laman yung SO tsaka di blanko ang paragraph
@@ -24,22 +28,22 @@ public class DisplayTextCtrler : MonoBehaviour
         switch (faceCol.normVec)
         {
             case FaceCollider.NormalVector.right:
-                return ParagraphUpdate(candidateText[0]);
+                return ReturnRandomPara(candidateText[0]);
             case FaceCollider.NormalVector.left:
-                return ParagraphUpdate(candidateText[1]);
+                return ReturnRandomPara(candidateText[1]);
             case FaceCollider.NormalVector.top:
-                return ParagraphUpdate(candidateText[2]);
+                return ReturnRandomPara(candidateText[2]);
             case FaceCollider.NormalVector.bottom:
-                return ParagraphUpdate(candidateText[3]);
+                return ReturnRandomPara(candidateText[3]);
             case FaceCollider.NormalVector.front:
-                return ParagraphUpdate(candidateText[4]);
+                return ReturnRandomPara(candidateText[4]);
             case FaceCollider.NormalVector.back:
-                return ParagraphUpdate(candidateText[5]);
-             default:
+                return ReturnRandomPara(candidateText[5]);
+            default:
                 return null;
         }
     }
-    
+
 
     /*private TEXTSO GetTextSOValue(FaceCollider.NormalVector face)
     {

@@ -34,12 +34,10 @@ public class FaceCollider : MonoBehaviour
         back,
         Unknown
     }
-    public TEXTSO textSO;
 
     private Dictionary<NormalVector, Texture2D> faceTex;
     private void Start()
     {
-        textSO.paragraphs = new string[(Random.Range(0, 1))];
         faceTex = new Dictionary<NormalVector, Texture2D>()
         {
             {NormalVector.right,Texture2DRight },
@@ -204,6 +202,7 @@ public class FaceCollider : MonoBehaviour
             {
                 Debug.Log(GetFaceDirection(normVec));
                 numberCounter.Value = NumEnumChange(GetColliderFace(hitNormal,transform));  //equivalent to face
+                disCtrlr.UpdatePara();
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
                 hasLogged = true;
