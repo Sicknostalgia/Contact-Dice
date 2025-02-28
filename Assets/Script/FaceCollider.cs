@@ -50,7 +50,7 @@ public class FaceCollider : MonoBehaviour
             {NormalVector.back, Texture2DBack }
         };
     }
-    public int NumEnumChange(NormalVector normVec)
+    /*public int NumEnumChange(NormalVector normVec)
     {
         switch (normVec)
         {
@@ -68,6 +68,26 @@ public class FaceCollider : MonoBehaviour
                 return 1;
             default: return 0;
                 
+        }
+    }*/
+    public int NumEnumChange(NormalVector normVec)
+    {
+        switch (normVec)
+        {
+            case NormalVector.right:
+                return 3;
+            case NormalVector.left:
+                return 4;
+            case NormalVector.front:
+                return 2;
+            case NormalVector.back:
+                return 5;
+            case NormalVector.top:
+                return 6;
+            case NormalVector.bottom:
+                return 1;
+            default: return 0;
+
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -185,7 +205,7 @@ public class FaceCollider : MonoBehaviour
                 Debug.Log(GetFaceDirection(normVec));
                 numberCounter.Value = NumEnumChange(GetColliderFace(hitNormal,transform));  //equivalent to face
                 //here dialogue final value
-               // disCtrlr.ParagraphUpdate
+                disCtrlr.ParagraphUpdate(face);
                 hasLogged = true;
             }
             if (rb.velocity.magnitude > 0)

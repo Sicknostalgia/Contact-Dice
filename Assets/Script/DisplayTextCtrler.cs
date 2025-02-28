@@ -9,8 +9,12 @@ public class DisplayTextCtrler : MonoBehaviour
     [SerializeField] FaceCollider faceCol;
     [SerializeField] TEXTSO[] candidateText;
 
-    public void ParagraphUpdate(string parag)
+    public void ParagraphUpdate()
     {
+        switch (faceCol.normVec)
+        {
+
+        }
         tmPro.text = string.Empty;
         if(textPara != null && textPara.paragraphs.Length > 0) //may laman yung SO tsaka di blanko ang paragraph
         {
