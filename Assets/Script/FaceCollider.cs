@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.VFX;
+using DG.Tweening;
 
 public class FaceCollider : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class FaceCollider : MonoBehaviour
     public Texture2D Texture2DBottom;
     public Texture2D Texture2DFront;
     public Texture2D Texture2DBack;
+    public Button[] ButGroup;
     [SerializeField] DisplayTextCtrler disCtrlr;
     public enum NormalVector
     {
@@ -36,6 +39,8 @@ public class FaceCollider : MonoBehaviour
     }
 
     private Dictionary<NormalVector, Texture2D> faceTex;
+    private Dictionary<NormalVector, Button> butDic;
+    Button butcor;
     private void Start()
     {
         faceTex = new Dictionary<NormalVector, Texture2D>()
@@ -46,6 +51,15 @@ public class FaceCollider : MonoBehaviour
             {NormalVector.bottom,Texture2DBottom },
             {NormalVector.front,Texture2DFront },
             {NormalVector.back, Texture2DBack }
+        };
+        butDic = new Dictionary<NormalVector, Button>()
+        {
+            {NormalVector.right, ButGroup[0]},
+            {NormalVector.right, ButGroup[1]},
+            {NormalVector.right, ButGroup[2]},
+            {NormalVector.right, ButGroup[3]},
+            {NormalVector.right, ButGroup[4]},
+            {NormalVector.right, ButGroup[5]},
         };
     }
     /*public int NumEnumChange(NormalVector normVec)
@@ -96,11 +110,14 @@ public class FaceCollider : MonoBehaviour
         hitDetected = true;
 
         NormalVector face = GetColliderFace(hitNormal, transform); //this calculate the final normal vector result, failed to reference this wont change your value on the following line
+        Debug.Log(face);
         Vector3 faceDirection = GetFaceDirection(face);
         numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
-        
+        /*        Button nge = GetButton(face);
+                Debug.Log(GetButton(face));*/
+        butcor = GetButton(face);
+        butcor.transform.DOScale(new Vector3(1, 1, 0), .1f);
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
-        Debug.Log(face);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
         {
             Texture2D finalTexture2D = GetTexture2D(face);
@@ -114,11 +131,15 @@ public class FaceCollider : MonoBehaviour
         CameraShakeEvent.TriggerShake(1, .25f);
         ObjctPlTrnsfrm.SpawnObject(vfx.gameObject, centerOfFace, Quaternion.identity);
     }
-
+    private Button GetButton(NormalVector result)
+    {
+        return butDic.TryGetValue(result, out Button butcors) ? butcors : null;
+    }
     private Texture2D GetTexture2D(NormalVector face)
     {
         return faceTex.TryGetValue(face, out Texture2D texture2D) ? texture2D : null;
     }
+
     void DetectFace()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -195,6 +216,7 @@ public class FaceCollider : MonoBehaviour
 
     void Update()
     {
+
         if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             if (rb.velocity.magnitude == 0 && !hasLogged)
