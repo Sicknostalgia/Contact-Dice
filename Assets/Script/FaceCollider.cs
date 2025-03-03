@@ -55,11 +55,11 @@ public class FaceCollider : MonoBehaviour
         butDic = new Dictionary<NormalVector, Button>()
         {
             {NormalVector.right, ButGroup[0]},
-            {NormalVector.right, ButGroup[1]},
-            {NormalVector.right, ButGroup[2]},
-            {NormalVector.right, ButGroup[3]},
-            {NormalVector.right, ButGroup[4]},
-            {NormalVector.right, ButGroup[5]},
+            {NormalVector.left, ButGroup[1]},
+            {NormalVector.top, ButGroup[2]},
+            {NormalVector.bottom, ButGroup[3]},
+            {NormalVector.front, ButGroup[4]},
+            {NormalVector.back, ButGroup[5]},
         };
     }
     /*public int NumEnumChange(NormalVector normVec)
@@ -113,10 +113,18 @@ public class FaceCollider : MonoBehaviour
         Debug.Log(face);
         Vector3 faceDirection = GetFaceDirection(face);
         numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
-        /*        Button nge = GetButton(face);
-                Debug.Log(GetButton(face));*/
         butcor = GetButton(face);
-        butcor.transform.DOScale(new Vector3(1, 1, 0), .1f);
+
+        if (butcor != null)
+        {
+            Debug.Log(butcor.gameObject.name);
+            butcor.transform.DOScale(1.5f, .1f).SetEase(Ease.OutBounce).OnComplete(() => butcor.transform.DOScale(1f, .1f));
+        }
+        else
+        {
+            butcor.transform.DOScale(1f, .1f);
+        }
+
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
         {
