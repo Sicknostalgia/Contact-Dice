@@ -2284,7 +2284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &955308044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5571,7 +5571,7 @@ Transform:
   m_GameObject: {fileID: 971539381063714477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 191.1, y: 409.2, z: 90.46}
+  m_LocalPosition: {x: 191.1, y: 248, z: 90.46}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5652,6 +5652,13 @@ MonoBehaviour:
   Texture2DBottom: {fileID: 2800000, guid: 3d6dc7235679c2e44aeef6192b3c0796, type: 3}
   Texture2DFront: {fileID: 2800000, guid: ce74b88d1fd043149950ff6803f28431, type: 3}
   Texture2DBack: {fileID: 2800000, guid: 38e5a397666ea0146b995e01668418f4, type: 3}
+  ButGroup:
+  - {fileID: 1463183141}
+  - {fileID: 1091293941}
+  - {fileID: 1634176973}
+  - {fileID: 1827434374}
+  - {fileID: 1167630689}
+  - {fileID: 1605460333}
   disCtrlr: {fileID: 963349121}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
