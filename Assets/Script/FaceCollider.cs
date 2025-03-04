@@ -124,10 +124,7 @@ public class FaceCollider : MonoBehaviour
             Debug.Log(butcor.gameObject.name);
             butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .1f, 1).SetEase(Ease.OutBounce);
         }
-        else
-        {
-            /*    butcor.transform.DOScale(1f, .1f);*/
-        }
+
 
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
