@@ -29,6 +29,7 @@ public class FaceCollider : MonoBehaviour
     public Texture2D Texture2DFront;
     public Texture2D Texture2DBack;
     public Button[] ButGroup;
+    public GameObject panel;
     [SerializeField] DisplayTextCtrler disCtrlr;
     public enum NormalVector
     {
@@ -234,6 +235,7 @@ public class FaceCollider : MonoBehaviour
             {
                 freelookCam.gameObject.SetActive(false);
                 topdownCam.gameObject.SetActive(true);
+                panel.SetActive(true);
                 NormalVector face = GetColliderFace(hitNormal, transform);
                 numberCounter.Value = NumEnumChange(face);  //equivalent to face
                 Debug.Log(GetFaceDirection(face));
