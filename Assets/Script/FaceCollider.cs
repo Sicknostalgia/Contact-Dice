@@ -16,6 +16,7 @@ public class FaceCollider : MonoBehaviour
     public GameObject vfx;
     // public UnityEvent<string> OnFaceDetected;
     public UnityEvent<int> OnDiceValue;
+    public CinemachineFreeLook freelookCam;
     public CinemachineFreeLook topdownCam;
 
     public NumberCounter numberCounter;
@@ -124,7 +125,7 @@ public class FaceCollider : MonoBehaviour
         }
         else
         {
-        /*    butcor.transform.DOScale(1f, .1f);*/
+            /*    butcor.transform.DOScale(1f, .1f);*/
         }
 
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
@@ -231,6 +232,8 @@ public class FaceCollider : MonoBehaviour
         {
             if (rb.velocity.magnitude == 0 && !hasLogged)
             {
+                freelookCam.gameObject.SetActive(false);
+                topdownCam.gameObject.SetActive(true);
                 NormalVector face = GetColliderFace(hitNormal, transform);
                 numberCounter.Value = NumEnumChange(face);  //equivalent to face
                 Debug.Log(GetFaceDirection(face));
@@ -241,8 +244,7 @@ public class FaceCollider : MonoBehaviour
             }
             if (rb.velocity.magnitude > 0)
             {
-                hasLogged = false;
-                topdownCam.gameObject.SetActive(true);
+                    hasLogged = false;
             }
         }
         /*        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
