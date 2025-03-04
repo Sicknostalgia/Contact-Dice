@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.VFX;
 using DG.Tweening;
+using Cinemachine;
 
 public class FaceCollider : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class FaceCollider : MonoBehaviour
     public GameObject vfx;
     // public UnityEvent<string> OnFaceDetected;
     public UnityEvent<int> OnDiceValue;
+    public CinemachineFreeLook topdownCam;
 
     public NumberCounter numberCounter;
     public NormalVector normVec;
@@ -118,11 +120,11 @@ public class FaceCollider : MonoBehaviour
         if (butcor != null)
         {
             Debug.Log(butcor.gameObject.name);
-            butcor.transform.DOScale(1.5f, .1f).SetEase(Ease.OutBounce).OnComplete(() => butcor.transform.DOScale(1f, .1f));
+            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .1f, 1).SetEase(Ease.OutBounce);
         }
         else
         {
-            butcor.transform.DOScale(1f, .1f);
+        /*    butcor.transform.DOScale(1f, .1f);*/
         }
 
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
@@ -240,6 +242,7 @@ public class FaceCollider : MonoBehaviour
             if (rb.velocity.magnitude > 0)
             {
                 hasLogged = false;
+                topdownCam.gameObject.SetActive(true);
             }
         }
         /*        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
