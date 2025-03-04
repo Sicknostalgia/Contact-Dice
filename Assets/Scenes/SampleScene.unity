@@ -1614,7 +1614,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 532345147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 963349122}
+        m_TargetAssemblyTypeName: ManageScene, Assembly-CSharp
+        m_MethodName: RestartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &532345147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2739,7 +2751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &955308044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3082,6 +3094,8 @@ GameObject:
   - component: {fileID: 963349117}
   - component: {fileID: 963349116}
   - component: {fileID: 963349121}
+  - component: {fileID: 963349122}
+  - component: {fileID: 963349123}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3202,6 +3216,30 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6971f8e371fbd824c9a2de02e46ccafd, type: 2}
   - {fileID: 11400000, guid: c7dc01333fbd3fb4fbe0493d1821e953, type: 2}
   - {fileID: 11400000, guid: d34fd916e566cbd49ba4daadf447ab90, type: 2}
+--- !u!114 &963349122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963349115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5829d2616c77c4581eb1b07ada273b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &963349123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963349115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ca72c2cd493e84cb974d986839b857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &969334499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,7 +3481,7 @@ GameObject:
   - component: {fileID: 1091293942}
   - component: {fileID: 1091293941}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: SiguroBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3508,7 +3546,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1091293942}
   m_OnClick:
     m_PersistentCalls:
@@ -3735,7 +3773,7 @@ GameObject:
   - component: {fileID: 1167630690}
   - component: {fileID: 1167630689}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: HaharutanBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3800,7 +3838,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1167630690}
   m_OnClick:
     m_PersistentCalls:
@@ -4445,7 +4483,7 @@ GameObject:
   - component: {fileID: 1463183142}
   - component: {fileID: 1463183141}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PapasokBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4510,7 +4548,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1463183142}
   m_OnClick:
     m_PersistentCalls:
@@ -4768,7 +4806,7 @@ GameObject:
   - component: {fileID: 1605460334}
   - component: {fileID: 1605460333}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: AbsentBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4833,7 +4871,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1605460334}
   m_OnClick:
     m_PersistentCalls:
@@ -5039,7 +5077,7 @@ GameObject:
   - component: {fileID: 1634176974}
   - component: {fileID: 1634176973}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: OTBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5104,7 +5142,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1634176974}
   m_OnClick:
     m_PersistentCalls:
@@ -5729,7 +5767,7 @@ GameObject:
   - component: {fileID: 1827434375}
   - component: {fileID: 1827434374}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: KapeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5794,7 +5832,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1827434375}
   m_OnClick:
     m_PersistentCalls:
@@ -6367,7 +6405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: REROLL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

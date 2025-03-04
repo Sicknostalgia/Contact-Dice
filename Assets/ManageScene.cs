@@ -5,18 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class ManageScene : MonoBehaviour
 {
-    // Start is called before the first frame update
+    bool isRewinding= false;
+    //for recording position
+    List<Vector3> positions;
+
     void Start()
     {
+        positions = new List<Vector3>();
+    }
 
+    private void FixedUpdate()
+    {
+        
     }
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     // Update is called once per frame
-    void Update()
+    public void StartRewind()
     {
-        
+        isRewinding = true;
+    }
+    public void StopRewind()
+    {
+        isRewinding = false;
     }
 }
