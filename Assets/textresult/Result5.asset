@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paragraphs:
   - Uy! Alam mo ba yung anu nya kanina umano, sa ano, at ano...
-  - Alam mo nakakatamad minsan gumawa ng ano nu? Uy pero kahit na ano paman maganda
-    parin yung ano...
-  - 'Bigyan kita ng topic mo mamaya sa trabaho: "Pano wag mangialam sa buhay ng iba?"'
-  - Isa pang magandang topic "Anu kaya kung mag tayo ng business "Mind your own"
-    business?"
+  - "Alam mo nakakatamad minsan gumawa ng ano nu? \nUy pero kahit na ano paman maganda
+    parin yung ano..."
+  - "Bigyan kita ng topic mo mamaya sa trabaho: \n\"Pano wag mangialam sa buhay ng
+    iba?\""
+  - "Isa pang magandang topic \"Anu kaya kung \nmag tayo ng business \"Mind your
+    own\" business?\""

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paragraphs:
   - Kape, kape ang sarap mag kape Oh yee!
-  - Ayain mo nalang si boss mo magkape, gaganda yung mood nyan.
+  - "Ayain mo nalang si boss mo magkape, \ngaganda yung mood nyan."
   - Trabaho konte,kape malala
-  - kakaantok makapagkape nga...kakapagod makapagkape nga... kakatamad makapagkape
-    nga...
+  - "kakaantok makapagkape nga...kakapagod makapagkape nga... \nkakatamad makapagkape
+    nga..."

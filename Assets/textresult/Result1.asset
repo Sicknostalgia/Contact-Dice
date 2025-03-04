@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Result1
   m_EditorClassIdentifier: 
   paragraphs:
-  - Pasok ka na kahit ngayon lang, sayang yung one day.
+  - 'Pasok ka na kahit ngayon lang, sayang
+
+    din yung isang araw.'
   - Diba ikaw nag babayad ng bills?
   - Bawe ka nalang sa gala sa susunod
   - Alalahanin mo, nag book ka ng flight!
