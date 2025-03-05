@@ -124,7 +124,7 @@ public class FaceCollider : MonoBehaviour
         {
             Vector3 originalScale = butcor.transform.localScale;
             Debug.Log(butcor.gameObject.name);
-            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .1f, 1).SetEase(Ease.OutBounce).OnComplete(()=> butcor.transform.localScale = originalScale);
+            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .05f, 1).SetEase(Ease.OutBounce).OnComplete(()=> butcor.transform.localScale = originalScale);
         }
         else
         {
