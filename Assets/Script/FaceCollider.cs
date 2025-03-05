@@ -31,6 +31,7 @@ public class FaceCollider : MonoBehaviour
     public Button[] ButGroup;
     public GameObject panel;
     [SerializeField] DisplayTextCtrler disCtrlr;
+
     public enum NormalVector
     {
         right,
@@ -121,8 +122,13 @@ public class FaceCollider : MonoBehaviour
 
         if (butcor != null)
         {
+            Vector3 originalScale = butcor.transform.localScale;
             Debug.Log(butcor.gameObject.name);
-            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .1f, 1).SetEase(Ease.OutBounce);
+            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .1f, 1).SetEase(Ease.OutBounce).OnComplete(()=> butcor.transform.localScale = originalScale);
+        }
+        else
+        {
+
         }
 
 

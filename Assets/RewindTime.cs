@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class RewindTime : MonoBehaviour
 {
-    // Start is called before the first frame update
+    List<Vector3> positions;
+    bool isRewinding = false;
     void Start()
     {
-        
+        positions = new List<Vector3>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void StartRewind()
+    {
+        isRewinding = true;
+    }
+    public void StopRewind()
+    {
+        isRewinding = false;
     }
 }
