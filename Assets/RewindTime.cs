@@ -5,10 +5,11 @@ using Cinemachine;
 
 public class RewindTime : MonoBehaviour
 {
-     List<PointInTime> pointsInTime;
+    List<PointInTime> pointsInTime;
     public bool isRewinding = false;
-    [SerializeField] 
+    [SerializeField]
     Rigidbody rb;
+    float gradualRwind;
     void Start()
     {
         pointsInTime = new List<PointInTime>();
@@ -18,8 +19,10 @@ public class RewindTime : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isRewinding) StartCoroutine(Rewind());
-        else Record();
+        if (!isRewinding)
+        {
+            Record();
+        }
     }
     private void Update()
     {
@@ -36,17 +39,18 @@ public class RewindTime : MonoBehaviour
             transform.position = pointIT.position;
             transform.rotation = pointIT.rotation;
             pointsInTime.RemoveAt(0);  //remove right after...
-            yield return null;
+            yield return new WaitForSeconds(.001f);
         }
         StopRewind();
     }
     void Record()
     {
-        pointsInTime.Insert(0, new PointInTime(transform.position,transform.rotation));
+        pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
     }
     public void StartRewind()
     {
         isRewinding = true;
+        StartCoroutine(Rewind());
         rb.isKinematic = true;
     }
     public void StopRewind()
