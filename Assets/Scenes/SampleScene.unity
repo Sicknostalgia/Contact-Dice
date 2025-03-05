@@ -753,7 +753,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254086649}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.31448233, y: 0, z: 0, w: 0.94926333}
   m_LocalPosition: {x: 0.0000019073486, y: -0.000015258789, z: -0.000005722046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6578,6 +6578,7 @@ GameObject:
   - component: {fileID: 8344526435792524697}
   - component: {fileID: 8344526435792524698}
   - component: {fileID: 8344526435792524699}
+  - component: {fileID: 8344526435792524700}
   m_Layer: 0
   m_Name: mainDice
   m_TagString: Untagged
@@ -6762,6 +6763,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRewinding: 0
   rb: {fileID: 0}
+--- !u!114 &8344526435792524700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971539381063714477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026bbf4ae43ea9b43b05c04a613dadc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

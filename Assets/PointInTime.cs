@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointInTime : MonoBehaviour
+public class PointInTime 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector3 position;
+    public Quaternion rotation;
 
-    // Update is called once per frame
-    void Update()
+    public PointInTime(Vector3 _position, Quaternion _rotation)
     {
-        
+        position = _position;
+        rotation = _rotation;
     }
 }

@@ -5,13 +5,13 @@ using Cinemachine;
 
 public class RewindTime : MonoBehaviour
 {
-     List<Vector3> positions;
+     List<PointInTime> pointsInTime;
     public bool isRewinding = false;
     [SerializeField] 
     Rigidbody rb;
     void Start()
     {
-        positions = new List<Vector3>();
+        pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -30,16 +30,18 @@ public class RewindTime : MonoBehaviour
     }
     void Rewind()
     {
-        if (positions.Count > 0)
+        if (pointsInTime.Count > 0)
         {
-            transform.position = positions[0];
-            positions.RemoveAt(0);  //remove right after...
+            PointInTime pointIT = pointsInTime[0];
+            transform.position = pointIT.position;
+            transform.rotation = pointIT.rotation;
+            pointsInTime.RemoveAt(0);  //remove right after...
         }
         else StopRewind();
     }
     void Record()
     {
-        positions.Insert(0, transform.position);
+        pointsInTime.Insert(0, new PointInTime(transform.position,transform.rotation));
     }
     public void StartRewind()
     {
