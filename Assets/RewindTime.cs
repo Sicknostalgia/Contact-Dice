@@ -18,7 +18,7 @@ public class RewindTime : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isRewinding) Rewind();
+        if (isRewinding) StartCoroutine(Rewind());
         else Record();
     }
     private void Update()
@@ -28,16 +28,17 @@ public class RewindTime : MonoBehaviour
             Rewind();
         }
     }
-    void Rewind()
+    IEnumerator Rewind()
     {
-        if (pointsInTime.Count > 0)
+        while (pointsInTime.Count > 0)
         {
             PointInTime pointIT = pointsInTime[0];
             transform.position = pointIT.position;
             transform.rotation = pointIT.rotation;
             pointsInTime.RemoveAt(0);  //remove right after...
+            yield return null;
         }
-        else StopRewind();
+        StopRewind();
     }
     void Record()
     {
