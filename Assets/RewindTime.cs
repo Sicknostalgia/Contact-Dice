@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
+//using Cinemachine;
 
 public class RewindTime : MonoBehaviour
 {
     List<PointInTime> pointsInTime;
+    List<PointInTimeAudio> audioinTime;
     public bool isRewinding = false;
     [SerializeField]
     Rigidbody rb;
     float gradualRwind;
+    Vector3 originalPos;
+   // public CineShake cineShake;
     void Start()
     {
+        originalPos.y = transform.position.y;
         pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
     }
@@ -38,6 +42,7 @@ public class RewindTime : MonoBehaviour
             PointInTime pointIT = pointsInTime[0];
             transform.position = pointIT.position;
             transform.rotation = pointIT.rotation;
+            
             pointsInTime.RemoveAt(0);  //remove right after...
             yield return new WaitForSeconds(.001f);
         }
@@ -46,6 +51,7 @@ public class RewindTime : MonoBehaviour
     void Record()
     {
         pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
+/*        audioinTime.Insert(0, new PointInTimeAudio(cineShake.collisionSound));*/
     }
     public void StartRewind()
     {
@@ -57,5 +63,9 @@ public class RewindTime : MonoBehaviour
     {
         isRewinding = false;
         rb.isKinematic = false;
+        if (transform.position.y >= originalPos.y-2)
+        {
+            transform.position = new Vector3(Random.Range(192.58f, 212.4f), 248, Random.Range(90.46f, 101.5f));
+        }
     }
 }

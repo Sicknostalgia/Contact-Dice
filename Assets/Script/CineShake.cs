@@ -8,7 +8,7 @@ public class CineShake : MonoBehaviour
     public static CineShake cShake;
     public CinemachineFreeLook cFreeLook;
     private float shakeTimer;
-    [SerializeField] SoundID collisionSound;
+    [SerializeField]public SoundID collisionSound;
     private void Awake()
     {
         if (cShake == null)
