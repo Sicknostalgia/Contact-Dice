@@ -11,6 +11,7 @@ public class FaceCollider : MonoBehaviour
 {
     private Vector3 hitPoint;
     private Vector3 hitNormal;
+    public  Vector3 originalScale;
     private bool hitDetected = false;
     public LayerMask groundLayer;
     public GameObject vfx;
@@ -120,9 +121,11 @@ public class FaceCollider : MonoBehaviour
         numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
         butcor = GetButton(face);
 
+
+        //refactor
         if (butcor != null)
         {
-            Vector3 originalScale = butcor.transform.localScale;
+            originalScale = butcor.transform.localScale;
             Debug.Log(butcor.gameObject.name);
             butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .05f, 1).SetEase(Ease.OutBounce).OnComplete(()=> butcor.transform.localScale = originalScale);
         }

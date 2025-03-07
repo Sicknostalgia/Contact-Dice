@@ -12,6 +12,7 @@ public class RewindTime : MonoBehaviour
     Rigidbody rb;
     float gradualRwind;
     Vector3 originalPos;
+    [SerializeField] FaceCollider faceCol;
    // public CineShake cineShake;
     void Start()
     {
@@ -66,6 +67,13 @@ public class RewindTime : MonoBehaviour
         if (transform.position.y >= originalPos.y-2)
         {
             transform.position = new Vector3(Random.Range(192.58f, 212.4f), 248, Random.Range(90.46f, 101.5f));
+            for (int i = 0; i < faceCol.ButGroup.Length; i++)
+            {
+                faceCol.ButGroup[i].transform.localScale = faceCol.originalScale;
+            }
+            
         }
+
+        //reset UI local position
     }
 }
