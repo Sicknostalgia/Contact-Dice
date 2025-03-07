@@ -108,6 +108,8 @@ public class FaceCollider : MonoBehaviour
 
         }
     }
+    private float punchCD = .2f;
+    private float lastPunchtime = 0;
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.contacts[0];
@@ -123,11 +125,14 @@ public class FaceCollider : MonoBehaviour
 
 
         //refactor
-        if (butcor != null)
+        if (butcor != null )
         {
+            if (Time.time - lastPunchtime < punchCD) return;
+
+            lastPunchtime = Time.time;
             originalScale = butcor.transform.localScale;
             Debug.Log(butcor.gameObject.name);
-            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .05f, 1).SetEase(Ease.OutBounce).OnComplete(()=> butcor.transform.localScale = originalScale);
+            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .05f, 1).SetEase(Ease.OutBounce).OnComplete(()=> butcor.transform.DOScale(originalScale,.01f));
         }
         Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
