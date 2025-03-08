@@ -7,10 +7,10 @@ public class ManageScene : MonoBehaviour
 {
 
     //for recording position
-
+    public static bool isPlaying = false;
     void Start()
     {
-      
+        isPlaying = true;
     }
 
     private void FixedUpdate()
