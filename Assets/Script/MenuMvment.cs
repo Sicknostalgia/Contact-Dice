@@ -4,25 +4,33 @@ using UnityEngine;
 using DG.Tweening;
 public class MenuMvment : MonoBehaviour
 {
-    [SerializeField] Vector3[] vecList;
+    private List<Transform> targets;
+    int target_Index = -1;
+    [SerializeField]float duration;
+    [SerializeField] private Ease ease;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(Travel2Vector());
     }
 
-    IEnumerator Travel2Vector()
+    void RunSequence()
     {
-        for (int i = 0; i < vecList.Length; i++)
+        ++target_Index;
+
+        if(target_Index == targets.Count)
         {
-            transform.DOMove(vecList[i], 1.5f).SetEase(Ease.OutElastic);
+            target_Index = 0;
         }
-        yield return null;
+        var seq = DOTween.Sequence();
+
+        seq.Append(transform.DOMove(targets[target_Index].position, duration).SetEase(ease));
+        seq.OnComplete(RunSequence);
     }
+
 }
