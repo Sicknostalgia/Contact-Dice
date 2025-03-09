@@ -26,6 +26,9 @@ public class HexGrid : MonoBehaviour
 
                 if (col % 2 == 1)  //if the column is odd the y position is decreased by 
                     yPos -= hexHeight * 0.5f;
+
+                GameObject hex = Instantiate(hexPrefab, transform);
+                hex.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, -yPos);
             }
         }
     }
