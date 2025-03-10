@@ -20,8 +20,6 @@ public class RewindTime : MonoBehaviour
         pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (!isRewinding)
@@ -71,9 +69,6 @@ public class RewindTime : MonoBehaviour
             {
                 faceCol.ButGroup[i].transform.localScale = faceCol.originalScale;
             }
-            
         }
-
-        //reset UI local position
     }
 }

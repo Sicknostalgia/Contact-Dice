@@ -5,6 +5,7 @@ using UnityEngine;
 public class HexLayout : MonoBehaviour
 {
     public Transform[] vertexPTransform;
+    public Transform foundation;
     public float radius = 5f;
 
     private void Start()
@@ -23,11 +24,22 @@ public class HexLayout : MonoBehaviour
         {
             float angle = i * 60 * Mathf.Deg2Rad;  // Convert deg to rad since we will use mathf.Cos/Sin
             Vector3 position = new Vector3(
-                Mathf.Cos(angle) * radius, 
-                0f, 
-                Mathf.Sin(angle) * radius);
+                foundation.position.x + Mathf.Cos(angle) * radius, 
+                foundation.position.y, 
+                foundation.position.z + Mathf.Sin(angle) * radius);
             vertexPTransform[i].position = position;
         }
 
+    }
+    private void Update()
+    {
+        for (int i = 0; i < vertexPTransform.Length; i++)
+        {
+            vertexPTransform[i].LookAt(Camera.main.transform);
+            Vector3 dirToCamera = Camera.main.transform.position - vertexPTransform[i].position;
+            dirToCamera.x = 0f;
+
+            vertexPTransform[i].rotation = Quaternion.LookRotation(dirToCamera);
+        }
     }
 }
