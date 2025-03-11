@@ -36,8 +36,9 @@ public class HexLayout : MonoBehaviour
         for (int i = 0; i < vertexPTransform.Length; i++)
         {
             vertexPTransform[i].LookAt(Camera.main.transform);
-            Vector3 dirToCamera = Camera.main.transform.position - vertexPTransform[i].position;
+            Vector3 dirToCamera = Camera.main.transform.position + vertexPTransform[i].position;
             dirToCamera.x = 0f;
+            dirToCamera.y = -360f;
 
             vertexPTransform[i].rotation = Quaternion.LookRotation(dirToCamera);
         }
