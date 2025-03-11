@@ -8,7 +8,7 @@ public class MenuMvment : MonoBehaviour
     [SerializeField] List<Transform> targets;
     private List<Transform> shufTar;
     int target_Index = -1;
-    [SerializeField]float duration;
+    [SerializeField] float duration;
     [SerializeField] private Ease ease;
     // Start is called before the first frame update
     void Start()
@@ -27,18 +27,26 @@ public class MenuMvment : MonoBehaviour
             (shufTar[i], shufTar[rndmIndx]) = (shufTar[rndmIndx], shufTar[i]);
         }
     }
+    Vector3 RandRot()
+    {
+        return new Vector3(
+            Random.Range(0, 360),
+            Random.Range(0, 360),
+            Random.Range(0, 360)
+            );
+    }
     void RunSequence()
     {
         ++target_Index;
-        if(target_Index == shufTar.Count)
+        if (target_Index == shufTar.Count)
         {
             ShuffleTarg();
             target_Index = 0;
         }
-        
+
         var seq = DOTween.Sequence();
         seq.Append(transform.DOMove(shufTar[target_Index].position, duration).SetEase(ease));
-        seq.Append(transform.DORotate(new Vector3(Random.Range(1, 2), 2, 4), 1, RotateMode.Fast));
+        seq.Join(transform.DORotate(RandRot(),duration).SetEase(ease));
         seq.OnComplete(RunSequence);
     }
 
