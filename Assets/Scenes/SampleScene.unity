@@ -1059,8 +1059,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.52573115, y: 0, z: 0, w: 0.85065085}
-  m_LocalPosition: {x: 212.4, y: 258, z: 96.5}
+  m_LocalRotation: {x: 0.54024035, y: 0, z: 0, w: 0.84151083}
+  m_LocalPosition: {x: 206.03, y: 257.58, z: 98.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1352,7 +1352,7 @@ Transform:
   m_GameObject: {fileID: 386552290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 197.9, y: 83.6, z: 0}
+  m_LocalPosition: {x: 212.4, y: 248, z: 101.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1689,7 +1689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515577819}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5057713, y: 0, z: 0, w: 0.8626676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3330,7 +3330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &963349116
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3816,6 +3816,7 @@ GameObject:
   - component: {fileID: 1098586205}
   - component: {fileID: 1098586207}
   - component: {fileID: 1098586206}
+  - component: {fileID: 1098586208}
   m_Layer: 0
   m_Name: Top Down
   m_TagString: Untagged
@@ -3831,8 +3832,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098586204}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.5, y: 174.4, z: 96.5}
+  m_LocalRotation: {x: 0.54024035, y: 0, z: 0, w: 0.84151083}
+  m_LocalPosition: {x: -6.37, y: 9.58, z: -2.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3840,7 +3841,7 @@ Transform:
   - {fileID: 515577820}
   - {fileID: 1563239561}
   m_Father: {fileID: 386552293}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65.4, y: 0, z: 0}
 --- !u!114 &1098586206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3889,8 +3890,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1187942789}
-  m_Follow: {fileID: 1187942789}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 50
@@ -3976,6 +3977,20 @@ MonoBehaviour:
   - {fileID: 1197016207}
   - {fileID: 515577821}
   - {fileID: 1563239562}
+--- !u!114 &1098586208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098586204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4cb48bc8f599d8408819327fb9cb6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceTrans: {fileID: 8344526435792524694}
+  offset: {x: 0, y: 15, z: -7}
 --- !u!1 &1167630687
 GameObject:
   m_ObjectHideFlags: 0
@@ -4174,7 +4189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197016205}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5257311, y: 0, z: 0, w: 0.85065085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6827,7 +6842,7 @@ Transform:
   m_GameObject: {fileID: 1936621312}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.5, y: 168.9, z: 96.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7656,10 +7671,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &8344526435792524697
 MonoBehaviour:
@@ -7767,8 +7782,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97460e0d697d4f54fb8c3c4031148add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0
-  ease: 0
+  targets:
+  - {fileID: 1711757098}
+  - {fileID: 139520486}
+  - {fileID: 1439203867}
+  - {fileID: 1388007473}
+  - {fileID: 1193728490}
+  - {fileID: 706492076}
+  duration: 1
+  ease: 17
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

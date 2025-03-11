@@ -4,14 +4,14 @@ using UnityEngine;
 using DG.Tweening;
 public class MenuMvment : MonoBehaviour
 {
-    private List<Transform> targets;
+    [SerializeField] List<Transform> targets;
     int target_Index = -1;
     [SerializeField]float duration;
     [SerializeField] private Ease ease;
     // Start is called before the first frame update
     void Start()
     {
-
+        RunSequence();
     }
 
     // Update is called once per frame
