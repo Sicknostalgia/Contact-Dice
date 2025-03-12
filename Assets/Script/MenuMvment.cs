@@ -27,7 +27,7 @@ public class MenuMvment : MonoBehaviour
             (shufTar[i], shufTar[rndmIndx]) = (shufTar[rndmIndx], shufTar[i]);
         }
     }
-    Vector3 RandRot()
+    Vector3 RandRot() //method return type
     {
         return new Vector3(
             Random.Range(0, 360),
