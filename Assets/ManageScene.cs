@@ -10,7 +10,7 @@ public class ManageScene : MonoBehaviour
     public static bool isPlaying = false;
     void Start()
     {
-        isPlaying = true;
+        isPlaying = false;
     }
 
     private void FixedUpdate()
