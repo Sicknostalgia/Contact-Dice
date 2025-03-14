@@ -851,7 +851,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 1
+  vfxSystemSortPriority: 4
   sort: 0
   sortMode: 0
   revertSorting: 0
@@ -2451,7 +2451,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 1
-  vfxSystemSortPriority: 2
+  vfxSystemSortPriority: 3
   sort: 0
   sortMode: 0
   revertSorting: 0
@@ -4436,7 +4436,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 1
-  vfxSystemSortPriority: 3
+  vfxSystemSortPriority: 2
   sort: 0
   sortMode: 0
   revertSorting: 0
@@ -7050,7 +7050,7 @@ MonoBehaviour:
   uvMode: 0
   flipbookLayout: 0
   useSoftParticle: 0
-  vfxSystemSortPriority: 0
+  vfxSystemSortPriority: 1
   sort: 0
   sortMode: 0
   revertSorting: 0
@@ -9716,7 +9716,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615266}
   - {fileID: 8926484042661615307}
   dataType: 0
-  capacity: 32
+  capacity: 33
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 1

@@ -7438,7 +7438,7 @@ GameObject:
   - component: {fileID: 8344526435792524699}
   - component: {fileID: 8344526435792524700}
   - component: {fileID: 8344526435792524701}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mainDice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
