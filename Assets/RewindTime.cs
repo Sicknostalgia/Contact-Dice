@@ -64,10 +64,11 @@ public class RewindTime : MonoBehaviour
         rb.isKinematic = false;
         if (transform.position.y >= originalPos.y-2)
         {
-            transform.position = new Vector3(Random.Range(192.58f, 212.4f), 248, Random.Range(90.46f, 101.5f));
+            transform.position = new Vector3(Random.Range(192.58f, 212.4f), 248, Random.Range(90.46f, 101.5f)); // randomize the position
             for (int i = 0; i < faceCol.ButGroup.Length; i++)
             {
                 faceCol.ButGroup[i].transform.localScale = faceCol.originalScale;
+
             }
         }
     }
