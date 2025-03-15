@@ -236,7 +236,7 @@ public class FaceCollider : MonoBehaviour
 
         if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            if (rb.velocity.magnitude == 0 && !hasLogged)
+            if (rb.linearVelocity.magnitude == 0 && !hasLogged)
             {
                 freelookCam.gameObject.SetActive(false);
                 topdownCam.gameObject.SetActive(true);
@@ -249,7 +249,7 @@ public class FaceCollider : MonoBehaviour
                 //disCtrlr.ParagraphUpdate(face);
                 hasLogged = true;
             }
-            if (rb.velocity.magnitude > 0)
+            if (rb.linearVelocity.magnitude > 0)
             {
                     hasLogged = false;
             }
