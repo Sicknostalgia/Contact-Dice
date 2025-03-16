@@ -8,30 +8,38 @@ public class HexLayout : MonoBehaviour
     public Transform[] vertexPTransform;
     public Transform foundation;
     public float radius = 5f;
-
+    public Ease ease;
+    Vector3 defaultScale;
     private void Start()
     {
+        SetDefaultScale();
         FormHexagon();
         RewindTime.onPlace += FormHexagon;
         RewindTime.notOnPlace += Scatter;
     }
 
+    void SetDefaultScale()
+    {
+        defaultScale = transform.localScale;
+    }
+
     void FormHexagon()
     {
-        if(vertexPTransform.Length != 6)
+        if (vertexPTransform.Length != 6)
         {
             Debug.LogError("More/less than 6");
             return;
-        }    
+        }
         for (int i = 0; i < vertexPTransform.Length; i++)
         {
             float angle = i * 60 * Mathf.Deg2Rad;  // Convert deg to rad since we will use mathf.Cos/Sin
             Vector3 position = new Vector3(
-                foundation.position.x + Mathf.Cos(angle) * radius, 
-                foundation.position.y, 
+                foundation.position.x + Mathf.Cos(angle) * radius,
+                foundation.position.y,
                 foundation.position.z + Mathf.Sin(angle) * radius);
+
             vertexPTransform[i].position = position;
-            vertexPTransform[i].DOScale(1, .5f);
+            vertexPTransform[i].DOScale(1, .5f).SetEase(ease).OnComplete(() => vertexPTransform[i].DOScale(defaultScale, 0.05f));
         }
 
     }
