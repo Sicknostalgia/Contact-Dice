@@ -75,7 +75,7 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 2800000, guid: 3d6dc7235679c2e44aeef6192b3c0796, type: 3}
+      - m_Value: {fileID: 2800000, guid: 714ce62937d0b41448f159ad2bc6be60, type: 3}
         m_Name: MainTex
         m_Overridden: 1
     m_Bool:
