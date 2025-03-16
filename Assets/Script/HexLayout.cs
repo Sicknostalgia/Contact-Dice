@@ -11,13 +11,12 @@ public class HexLayout : MonoBehaviour
 
     private void Start()
     {
-        InitiateHexagon();
-       
-        RewindTime.onPlace += InitiateHexagon;
+        FormHexagon();
+        RewindTime.onPlace += FormHexagon;
         RewindTime.notOnPlace += Scatter;
     }
 
-    void InitiateHexagon()
+    void FormHexagon()
     {
         if(vertexPTransform.Length != 6)
         {
@@ -32,6 +31,7 @@ public class HexLayout : MonoBehaviour
                 foundation.position.y, 
                 foundation.position.z + Mathf.Sin(angle) * radius);
             vertexPTransform[i].position = position;
+            vertexPTransform[i].DOScale(1, .5f);
         }
 
     }
@@ -58,7 +58,7 @@ public class HexLayout : MonoBehaviour
 
     private void OnDisable()
     {
-        RewindTime.onPlace -= InitiateHexagon;
+        RewindTime.onPlace -= FormHexagon;
         RewindTime.notOnPlace -= Scatter;
     }
 }
