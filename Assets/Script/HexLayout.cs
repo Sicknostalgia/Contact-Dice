@@ -13,7 +13,8 @@ public class HexLayout : MonoBehaviour
     {
         InitiateHexagon();
        
-        RewindTime.notOnPlace += InitiateHexagon;
+        RewindTime.onPlace += InitiateHexagon;
+        RewindTime.notOnPlace += Scatter;
     }
 
     void InitiateHexagon()
@@ -57,6 +58,7 @@ public class HexLayout : MonoBehaviour
 
     private void OnDisable()
     {
-        RewindTime.notOnPlace -= InitiateHexagon;
+        RewindTime.onPlace -= InitiateHexagon;
+        RewindTime.notOnPlace -= Scatter;
     }
 }
