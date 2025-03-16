@@ -12,6 +12,7 @@ public class HexLayout : MonoBehaviour
     private void Start()
     {
         InitiateHexagon();
+        RewindTime.onPlace += Scatter;
     }
 
     void InitiateHexagon()
@@ -45,11 +46,16 @@ public class HexLayout : MonoBehaviour
         }
     }
 
-    public void Scatter()
+    private void Scatter()
     {
         for (int i = 0; i < vertexPTransform.Length; i++)
         {
             vertexPTransform[i].DOScale(0, .5f);
         }
+    }
+
+    private void OnDisable()
+    {
+        RewindTime.onPlace += Scatter;
     }
 }
