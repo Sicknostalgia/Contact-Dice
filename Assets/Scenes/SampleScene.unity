@@ -222,6 +222,7 @@ MonoBehaviour:
   - {fileID: 706492076}
   foundation: {fileID: 8344526435792524694}
   radius: 7
+  ease: 24
 --- !u!1 &38959287
 GameObject:
   m_ObjectHideFlags: 0
@@ -4621,6 +4622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleModifier: 0.1
+  easeType: 29
   isHovered: 0
 --- !u!1 &1391795356
 GameObject:
@@ -4778,6 +4780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleModifier: 0.1
+  easeType: 29
   isHovered: 0
 --- !u!1 &1463183139
 GameObject:
@@ -6157,6 +6160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleModifier: 0.1
+  easeType: 29
   isHovered: 0
 --- !u!1 &1761093442 stripped
 GameObject:
@@ -6177,6 +6181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleModifier: 0.1
+  easeType: 29
   isHovered: 0
 --- !u!1 &1761445211 stripped
 GameObject:
@@ -6197,6 +6202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleModifier: 0.1
+  easeType: 29
   isHovered: 0
 --- !u!1 &1795421135
 GameObject:
@@ -6974,6 +6980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleModifier: 0.1
+  easeType: 29
   isHovered: 0
 --- !u!1 &1936621312
 GameObject:
