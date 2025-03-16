@@ -1,7 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using DG.Tweening;
 public class HexLayout : MonoBehaviour
 {
     public Transform[] vertexPTransform;
@@ -41,6 +42,14 @@ public class HexLayout : MonoBehaviour
             dirToCamera.y = -360f;
 
             vertexPTransform[i].rotation = Quaternion.LookRotation(dirToCamera);
+        }
+    }
+
+    public void Scatter()
+    {
+        for (int i = 0; i < vertexPTransform.Length; i++)
+        {
+            vertexPTransform[i].DOScale(0, .5f);
         }
     }
 }

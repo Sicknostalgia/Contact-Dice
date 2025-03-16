@@ -13,7 +13,9 @@ public class RewindTime : MonoBehaviour
     float gradualRwind;
     Vector3 originalPos;
     [SerializeField] FaceCollider faceCol;
-   // public CineShake cineShake;
+    // public CineShake cineShake;
+   public delegate void OnPlace();
+    public static event OnPlace onPlace;
     void Start()
     {
         originalPos.y = transform.position.y;
@@ -65,6 +67,7 @@ public class RewindTime : MonoBehaviour
         if (transform.position.y >= originalPos.y-2)
         {
             transform.position = new Vector3(Random.Range(192.58f, 212.4f), 248, Random.Range(90.46f, 101.5f)); // randomize the position of main dice
+            onPlace();
             for (int i = 0; i < faceCol.ButGroup.Length; i++)  //reset the scale of the button ui
             {
                 faceCol.ButGroup[i].transform.localScale = faceCol.originalScale;
