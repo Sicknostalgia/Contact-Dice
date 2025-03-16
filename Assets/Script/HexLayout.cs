@@ -12,7 +12,8 @@ public class HexLayout : MonoBehaviour
     private void Start()
     {
         InitiateHexagon();
-        RewindTime.onPlace += Scatter;
+       
+        RewindTime.notOnPlace += InitiateHexagon;
     }
 
     void InitiateHexagon()
@@ -33,7 +34,7 @@ public class HexLayout : MonoBehaviour
         }
 
     }
-    private void Update()
+    private void Update() //looking to camera anytime
     {
         for (int i = 0; i < vertexPTransform.Length; i++)
         {
@@ -56,6 +57,6 @@ public class HexLayout : MonoBehaviour
 
     private void OnDisable()
     {
-        RewindTime.onPlace += Scatter;
+        RewindTime.notOnPlace -= InitiateHexagon;
     }
 }

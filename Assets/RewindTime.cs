@@ -14,8 +14,9 @@ public class RewindTime : MonoBehaviour
     Vector3 originalPos;
     [SerializeField] FaceCollider faceCol;
     // public CineShake cineShake;
-   public delegate void OnPlace();
-    public static event OnPlace onPlace;
+   public delegate void playerPlace();
+    public static event playerPlace onPlace;
+    public static event playerPlace notOnPlace;
     void Start()
     {
         originalPos.y = transform.position.y;
@@ -65,14 +66,19 @@ public class RewindTime : MonoBehaviour
         isRewinding = false;
         rb.isKinematic = false;
         if (transform.position.y >= originalPos.y-2)
-        {
-            transform.position = new Vector3(Random.Range(192.58f, 212.4f), 248, Random.Range(90.46f, 101.5f)); // randomize the position of main dice
+        {     
             onPlace?.Invoke(); // null check to avoid error
+
+            //seperate this as well
             for (int i = 0; i < faceCol.ButGroup.Length; i++)  //reset the scale of the button ui
             {
                 faceCol.ButGroup[i].transform.localScale = faceCol.originalScale;
 
             }
+        }
+        else
+        {
+            notOnPlace?.Invoke();
         }
     }
 }
