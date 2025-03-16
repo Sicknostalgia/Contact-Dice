@@ -148,7 +148,7 @@ public class FaceCollider : MonoBehaviour
 
         CameraShakeEvent.TriggerShake(1, .25f);
         ObjctPlTrnsfrm.SpawnObject(vfx.gameObject, centerOfFace, Quaternion.identity);
-        ObjctPlTrnsfrm.SpawnObject(decalsObj, centerOfFace, Quaternion.identity);
+      //  ObjctPlTrnsfrm.SpawnObject(decalsObj, centerOfFace, Quaternion.identity);
     }
     private Button GetButton(NormalVector result)
     {
