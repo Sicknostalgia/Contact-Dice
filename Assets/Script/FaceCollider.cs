@@ -34,7 +34,6 @@ public class FaceCollider : MonoBehaviour
     [SerializeField] DisplayTextCtrler disCtrlr;
 
     [SerializeField] GameObject decalsObj;
-    public float downValue = 1f;
     public enum NormalVector
     {
         right,
@@ -136,7 +135,7 @@ public class FaceCollider : MonoBehaviour
             Debug.Log(butcor.gameObject.name);
             butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .05f, 1).SetEase(Ease.OutBounce).OnComplete(()=> butcor.transform.DOScale(originalScale,.01f));
         }
-        Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f); //center of the mainDice obj
+        Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
         {
             Texture2D finalTexture2D = GetTexture2D(face);
@@ -149,7 +148,7 @@ public class FaceCollider : MonoBehaviour
 
         CameraShakeEvent.TriggerShake(1, .25f);
         ObjctPlTrnsfrm.SpawnObject(vfx.gameObject, centerOfFace, Quaternion.identity);
-        ObjctPlTrnsfrm.SpawnObject(decalsObj, centerOfFace += Vector3.down, Quaternion.identity);
+        ObjctPlTrnsfrm.SpawnObject(decalsObj, centerOfFace, Quaternion.identity);
     }
     private Button GetButton(NormalVector result)
     {
