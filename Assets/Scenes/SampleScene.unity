@@ -6192,7 +6192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1807550141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6226,7 +6226,7 @@ Transform:
   m_GameObject: {fileID: 1807550140}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 222.26, y: 134.05, z: 93.93}
+  m_LocalPosition: {x: 222.26, y: 133.958, z: 93.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6534,6 +6534,11 @@ PrefabInstance:
       propertyPath: m_PropertySheet.m_NamedObject.m_Array.Array.data[1].m_Value
       value: 
       objectReference: {fileID: 2800000, guid: 38e5a397666ea0146b995e01668418f4, type: 3}
+    - target: {fileID: 8928159054878668695, guid: 8ef80e370f1d4034c89298ac84944e10,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8928159054878668695, guid: 8ef80e370f1d4034c89298ac84944e10,
         type: 3}
       propertyPath: m_PropertySheet.m_NamedObject.m_Array.Array.data[0].m_Overridden
