@@ -254,10 +254,9 @@ public class FaceCollider : MonoBehaviour
     }*/
     void Update()
     {
-
         if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            if (rb.linearVelocity.magnitude == 0 && !isAboveThreshold)
+            if (rb.linearVelocity.magnitude == 0 && isAboveThreshold)
             {
                 freelookCam.gameObject.SetActive(false);
                 NormalVector face = GetColliderFace(hitNormal, transform);
