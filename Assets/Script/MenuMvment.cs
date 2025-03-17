@@ -6,11 +6,11 @@ using System.Linq;
 public class MenuMvment : MonoBehaviour
 {
     [SerializeField] List<Transform> targets;
-    private Sequence seq;
     private List<Transform> shufTar;
     int target_Index = -1;
     [SerializeField] float duration;
     [SerializeField] private Ease ease;
+    Sequence seq;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,17 +44,16 @@ public class MenuMvment : MonoBehaviour
             ShuffleTarg();
             target_Index = 0;
         }
-        seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0,1,0), duration).SetEase(ease));
-        seq.Join(transform.DORotate(RandRot(),duration).SetEase(ease));
+
+        seq = DOTween.Sequence();
+        seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0, 1, 0), duration).SetEase(ease));
+        seq.Join(transform.DORotate(RandRot(), duration).SetEase(ease));
         seq.OnComplete(RunSequence);
     }
 
     public void StopSeq()
     {
-        if(seq != null && seq.IsActive())
-        {
-            seq.Kill();
-        }
+        seq.Kill();
     }
 
 }
