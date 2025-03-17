@@ -5389,6 +5389,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_text
+      value: MAGKAKAPE
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 6314111721047505880, guid: 1c3ba7148c612174496018f59038f546,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5999,6 +6029,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_text
+      value: NATATAE
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 6314111721047505880, guid: 1c3ba7148c612174496018f59038f546,
         type: 3}
@@ -6826,6 +6886,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_text
+      value: AABSENT
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 6314111721047505880, guid: 1c3ba7148c612174496018f59038f546,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7504,6 +7594,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_text
+      value: OVERTIME
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 6314111721047505880, guid: 1c3ba7148c612174496018f59038f546,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7651,6 +7771,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_text
+      value: MAGCHICHISMIS
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 6314111721047505880, guid: 1c3ba7148c612174496018f59038f546,
         type: 3}
@@ -7824,6 +7974,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_text
+      value: PAPASOK
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 2454635037072727549, guid: 1c3ba7148c612174496018f59038f546,
+        type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 6314111721047505880, guid: 1c3ba7148c612174496018f59038f546,
         type: 3}
