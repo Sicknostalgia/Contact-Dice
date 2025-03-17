@@ -7,12 +7,6 @@ public class FollowWho : MonoBehaviour
     [SerializeField] Transform diceTrans;
     [SerializeField] Vector3 offset;
     CinemachineFreeLook freeLook;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     private void Update()
     {
         if (ManageScene.isPlaying)

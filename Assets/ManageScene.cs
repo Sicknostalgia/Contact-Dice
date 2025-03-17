@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ManageScene : MonoBehaviour
 {
-
-    //for recording position
     public static bool isPlaying = false;
-    void Start()
+    void Awake()
     {
         isPlaying = false;
     }
@@ -16,6 +14,4 @@ public class ManageScene : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    // Update is called once per frame
-    
 }
