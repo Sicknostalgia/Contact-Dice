@@ -12,11 +12,6 @@ public class ManageScene : MonoBehaviour
     {
         isPlaying = false;
     }
-
-    private void FixedUpdate()
-    {
-        
-    }
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
