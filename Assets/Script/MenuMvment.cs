@@ -11,12 +11,14 @@ public class MenuMvment : MonoBehaviour
     [SerializeField] float duration;
     [SerializeField] private Ease ease;
     Sequence seq;
+    Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         RewindTime.onPlace += DelSeq;
+        rb = GetComponent<Rigidbody>();
         ShuffleTarg();
-        RunSequence();
+        StartCoroutine(DelaySeq());
     }
 
     void ShuffleTarg()
@@ -44,8 +46,10 @@ public class MenuMvment : MonoBehaviour
     }
     IEnumerator DelaySeq()
     {
+        rb.isKinematic = true;
         yield return new WaitForSeconds(1);
        RunSequence();
+        rb.isKinematic = false;
     }
     void RunSequence()
     {

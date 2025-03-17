@@ -38,6 +38,7 @@ public class RewindTime : MonoBehaviour
     public static void TrigOnPlace() //placing event to this make it scalable
     {
         onPlace?.Invoke();
+
     }
     public static void TrigNotOnPlace() //placing event to this make it scalable
     {
@@ -86,7 +87,6 @@ public class RewindTime : MonoBehaviour
         if (transform.position.y >= originalPos.y-2)  //above OnPlace
         {
             TrigOnPlace();
-
             //seperate this as well
             for (int i = 0; i < faceCol.ButGroup.Length; i++)  //reset the scale of the button ui
             {
