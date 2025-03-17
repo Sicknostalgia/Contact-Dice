@@ -11,7 +11,7 @@ public class FollowWho : MonoBehaviour
     {
         if (!ManageScene.isPlaying)
         {
-            Assigned();
+            DeAssigned();
         }
         /*if (!ManageScene.isPlaying)
         {
