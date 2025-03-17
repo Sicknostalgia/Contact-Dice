@@ -23,10 +23,11 @@ public class FollowWho : MonoBehaviour
     void DeAssigned()
     {
         //follow player + offset
-       // transform.position = diceTrans.position + offset;
         gameObject.TryGetComponent<CinemachineFreeLook>(out CinemachineFreeLook cin);
         cin.Follow = null;
         cin.LookAt = null;
+       transform.position = diceTrans.position + offset;
+        return;  //Play once to prevent constant position assignment
 
     }
     void Assigned()
