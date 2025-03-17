@@ -34,6 +34,9 @@ public class FaceCollider : MonoBehaviour
     [SerializeField] DisplayTextCtrler disCtrlr;
 
     [SerializeField] GameObject decalsObj;
+
+    public static bool isAboveThreshold;
+    Vector3 originalPos;
     public enum NormalVector
     {
         right,
@@ -50,6 +53,9 @@ public class FaceCollider : MonoBehaviour
     Button butcor;
     private void Start()
     {
+        originalPos.y = transform.position.y;
+        isAboveThreshold = transform.position.y >= originalPos.y - 2;
+
         faceTex = new Dictionary<NormalVector, Texture2D>()
         {
             {NormalVector.right,Texture2DRight },
@@ -68,6 +74,9 @@ public class FaceCollider : MonoBehaviour
             {NormalVector.front, ButGroup[4]},
             {NormalVector.back, ButGroup[5]},
         };
+
+        freelookCam.gameObject.SetActive(false);
+
     }
     /*public int NumEnumChange(NormalVector normVec)
     {
@@ -238,17 +247,17 @@ public class FaceCollider : MonoBehaviour
         style.normal.textColor = color;
         UnityEditor.Handles.Label(end, label, style);
     }
-    private bool hasResult = false;
+/*    private bool hasResult = false;
     public void ToggleHasResult()  //off on
     {
         hasResult = !hasResult;
-    }
+    }*/
     void Update()
     {
 
         if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            if (rb.linearVelocity.magnitude == 0 && !hasResult)
+            if (rb.linearVelocity.magnitude == 0 && !isAboveThreshold)
             {
                 freelookCam.gameObject.SetActive(false);
                 NormalVector face = GetColliderFace(hitNormal, transform);

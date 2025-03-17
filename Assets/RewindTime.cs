@@ -12,9 +12,10 @@ public class RewindTime : MonoBehaviour
     [SerializeField]
     Rigidbody rb;
     float gradualRwind;
-    Vector3 originalPos;
+
     [SerializeField] FaceCollider faceCol;
     [SerializeField] CinemachineFreeLook freeLook;
+
     // public CineShake cineShake;
 
     /// <summary>
@@ -24,9 +25,11 @@ public class RewindTime : MonoBehaviour
     public static event Action notOnPlace;
     void Start()
     {
-        originalPos.y = transform.position.y;
+
         pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
+
+
     }
     void FixedUpdate()
     {
