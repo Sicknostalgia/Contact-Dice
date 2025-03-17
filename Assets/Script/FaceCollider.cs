@@ -239,7 +239,10 @@ public class FaceCollider : MonoBehaviour
         UnityEditor.Handles.Label(end, label, style);
     }
     private bool hasResult = false;
-
+    public void ToggleHasResult()  //off on
+    {
+        hasResult = !hasResult;
+    }
     void Update()
     {
 
@@ -248,20 +251,18 @@ public class FaceCollider : MonoBehaviour
             if (rb.linearVelocity.magnitude == 0 && !hasResult)
             {
                 freelookCam.gameObject.SetActive(false);
-                topdownCam.gameObject.SetActive(true);
-                panel.SetActive(true);
                 NormalVector face = GetColliderFace(hitNormal, transform);
                 numberCounter.Value = NumEnumChange(face);  //equivalent to face
                 Debug.Log(GetFaceDirection(face));
                 disCtrlr.UpdatePara(face);
+                panel.SetActive(true);
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
-                hasResult = true;
             }
-            if (rb.linearVelocity.magnitude > 0)
-            {
-                hasResult = false;
-            }
+            /* if (rb.linearVelocity.magnitude > 0)
+             {
+                 hasResult = false;
+             }*/
         }
         /*        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
                 DrawArrow(transform.position, -transform.right, Color.red);  // Left (-X)

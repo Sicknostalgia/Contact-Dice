@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Cinemachine;
+using Cinemachine;
 
 public class RewindTime : MonoBehaviour
 {
@@ -14,12 +14,13 @@ public class RewindTime : MonoBehaviour
     float gradualRwind;
     Vector3 originalPos;
     [SerializeField] FaceCollider faceCol;
+    [SerializeField] CinemachineFreeLook freeLook;
     // public CineShake cineShake;
 
     /// <summary>
     /// Observe Pattern for more scalable event sytem
     /// </summary>
-    public static event Action onPlace;  
+    public static event Action onPlace;
     public static event Action notOnPlace;
     void Start()
     {
@@ -40,17 +41,17 @@ public class RewindTime : MonoBehaviour
         onPlace?.Invoke();
 
     }
-    public static void TrigNotOnPlace() //placing event to this make it scalable
+/*    public static void TrigNotOnPlace() //placing event to this make it scalable
     {
         notOnPlace?.Invoke();
-    }
+    }*/
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+     /*   if (Input.GetKey(KeyCode.Space))
         {
             Rewind();
-        }
+        }*/
     }
 
     IEnumerator Rewind()
@@ -60,7 +61,7 @@ public class RewindTime : MonoBehaviour
             PointInTime pointIT = pointsInTime[0];
             transform.position = pointIT.position;
             transform.rotation = pointIT.rotation;
-            
+
             pointsInTime.RemoveAt(0);  //remove right after...
             yield return new WaitForSeconds(.001f);
         }
@@ -70,7 +71,7 @@ public class RewindTime : MonoBehaviour
     void Record()
     {
         pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
-/*        audioinTime.Insert(0, new PointInTimeAudio(cineShake.collisionSound));*/
+        /*        audioinTime.Insert(0, new PointInTimeAudio(cineShake.collisionSound));*/
     }
 
     public void StartRewind()
@@ -79,23 +80,27 @@ public class RewindTime : MonoBehaviour
         StartCoroutine(Rewind());
         rb.isKinematic = true;
     }
-
+    void ResetScale()
+    {
+        //seperate this as well
+        for (int i = 0; i < faceCol.ButGroup.Length; i++)  //reset the scale of the button ui
+        {
+            faceCol.ButGroup[i].transform.localScale = faceCol.originalScale;
+        }
+    }
     public void StopRewind()
     {
         isRewinding = false;
         rb.isKinematic = false;
-        if (transform.position.y >= originalPos.y-2)  //above OnPlace
-        {
+/*        if (transform.position.y >= originalPos.y - 2)  //above OnPlace
+        {*/
+            freeLook.gameObject.SetActive(false);
             TrigOnPlace();
-            //seperate this as well
-            for (int i = 0; i < faceCol.ButGroup.Length; i++)  //reset the scale of the button ui
-            {
-                faceCol.ButGroup[i].transform.localScale = faceCol.originalScale;
-            }
-        }
-        else
+            ResetScale();
+        /*}*/
+   /*     else
         {
             TrigNotOnPlace();
-        }
+        }*/
     }
 }
