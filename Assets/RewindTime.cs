@@ -19,7 +19,7 @@ public class RewindTime : MonoBehaviour
     /// <summary>
     /// Observe Pattern for more scalable event sytem
     /// </summary>
-    public static event Action  onPlace;  
+    public static event Action onPlace;  
     public static event Action notOnPlace;
     void Start()
     {
@@ -83,9 +83,10 @@ public class RewindTime : MonoBehaviour
     {
         isRewinding = false;
         rb.isKinematic = false;
-        if (transform.position.y >= originalPos.y-2)
+        if (transform.position.y >= originalPos.y-2)  //above OnPlace
         {
             TrigOnPlace();
+
             //seperate this as well
             for (int i = 0; i < faceCol.ButGroup.Length; i++)  //reset the scale of the button ui
             {

@@ -14,6 +14,7 @@ public class MenuMvment : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RewindTime.onPlace += RunSequence;
         ShuffleTarg();
         RunSequence();
     }
@@ -54,6 +55,10 @@ public class MenuMvment : MonoBehaviour
     public void StopSeq()
     {
         seq.Kill();
+    }
+    private void OnApplicationQuit()
+    {
+        RewindTime.onPlace -= RunSequence;
     }
 
 }

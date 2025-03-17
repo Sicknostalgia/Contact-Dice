@@ -12,6 +12,7 @@ public class FollowWho : MonoBehaviour
     private void Start()
     {
         InitializePos();
+        RewindTime.onPlace += DeAssigned;
     }
     private void Update()
     {
@@ -29,8 +30,6 @@ public class FollowWho : MonoBehaviour
             hasAssigned = true;
         }
     }
-
-
     void InitializePos()
     {
         transform.position = diceTrans.position + offset;
@@ -42,6 +41,7 @@ public class FollowWho : MonoBehaviour
         cin.Follow = null;
         cin.LookAt = null;
         hasAssigned = false;
+        InitializePos();
     }
      public void Assigned()
     {
@@ -49,5 +49,10 @@ public class FollowWho : MonoBehaviour
         yey.Follow = diceTrans;
         yey.LookAt = diceTrans;
         hasAssigned = true;
+    }
+
+    private void OnApplicationQuit()
+    {
+        RewindTime.onPlace -= DeAssigned;
     }
 }
