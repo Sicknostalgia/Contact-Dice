@@ -15,14 +15,14 @@ public class FollowWho : MonoBehaviour
     }
     private void Update()
     {
-        if (ManageScene.isPlaying)
+    /*    if (ManageScene.isPlaying)
         {
             Assigned();
         }
         if (!ManageScene.isPlaying)
         {
             DeAssigned();
-        }
+        }*/
         if (!hasAssigned)
         {
           //  InitializePos();
@@ -35,7 +35,7 @@ public class FollowWho : MonoBehaviour
     {
         transform.position = diceTrans.position + offset;
     }
-    void DeAssigned()
+    public void DeAssigned()
     {
         //follow player + offset
         gameObject.TryGetComponent<CinemachineFreeLook>(out CinemachineFreeLook cin);
@@ -43,7 +43,7 @@ public class FollowWho : MonoBehaviour
         cin.LookAt = null;
         hasAssigned = false;
     }
-    void Assigned()
+     public void Assigned()
     {
         gameObject.TryGetComponent<CinemachineFreeLook>(out CinemachineFreeLook yey);
         yey.Follow = diceTrans;
