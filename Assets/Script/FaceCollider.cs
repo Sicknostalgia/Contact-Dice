@@ -11,7 +11,7 @@ public class FaceCollider : MonoBehaviour
 {
     private Vector3 hitPoint;
     private Vector3 hitNormal;
-    public  Vector3 originalScale;
+    public Vector3 originalScale;
     private bool hitDetected = false;
     public LayerMask groundLayer;
     public GameObject vfx;
@@ -124,31 +124,38 @@ public class FaceCollider : MonoBehaviour
         numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
         butcor = GetButton(face);
 
+        BtnReact();
+        VFXImpactTex(faceDirection, face);
+        CameraShakeEvent.TriggerShake(1, .25f);
+        //  ObjctPlTrnsfrm.SpawnObject(decalsObj, centerOfFace, Quaternion.identity);
+    }
 
+    void BtnReact()
+    {
         //refactor
-        if (butcor != null )
+        if (butcor != null)
         {
             if (Time.time - lastPunchtime < punchCD) return;
 
             lastPunchtime = Time.time;
             originalScale = butcor.transform.localScale;
             Debug.Log(butcor.gameObject.name);
-            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .05f, 1).SetEase(Ease.OutBounce).OnComplete(()=> butcor.transform.DOScale(originalScale,.01f));
+            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .05f, 1).SetEase(Ease.OutBounce).OnComplete(() => butcor.transform.DOScale(originalScale, .01f));
         }
-        Vector3 centerOfFace = transform.position + (faceDirection * transform.lossyScale.magnitude / 2f);
+    }
+    void VFXImpactTex(Vector3 fDirection, NormalVector f)
+    {
+        Vector3 centerOfFace = transform.position + (fDirection * transform.lossyScale.magnitude / 2f);
         if (vfx.gameObject.TryGetComponent<VisualEffect>(out VisualEffect vfxCom))
         {
-            Texture2D finalTexture2D = GetTexture2D(face);
+            Texture2D finalTexture2D = GetTexture2D(f);
             vfxCom.SetTexture("MainTex", finalTexture2D);
         }
         else
         {
             Debug.Log("null vfx");
         }
-
-        CameraShakeEvent.TriggerShake(1, .25f);
         ObjctPlTrnsfrm.SpawnObject(vfx.gameObject, centerOfFace, Quaternion.identity);
-      //  ObjctPlTrnsfrm.SpawnObject(decalsObj, centerOfFace, Quaternion.identity);
     }
     private Button GetButton(NormalVector result)
     {
@@ -231,14 +238,14 @@ public class FaceCollider : MonoBehaviour
         style.normal.textColor = color;
         UnityEditor.Handles.Label(end, label, style);
     }
-    private bool hasLogged = false;
+    private bool hasResult = false;
 
     void Update()
     {
 
         if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            if (rb.linearVelocity.magnitude == 0 && !hasLogged)
+            if (rb.linearVelocity.magnitude == 0 && !hasResult)
             {
                 freelookCam.gameObject.SetActive(false);
                 topdownCam.gameObject.SetActive(true);
@@ -249,11 +256,11 @@ public class FaceCollider : MonoBehaviour
                 disCtrlr.UpdatePara(face);
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
-                hasLogged = true;
+                hasResult = true;
             }
             if (rb.linearVelocity.magnitude > 0)
             {
-                    hasLogged = false;
+                hasResult = false;
             }
         }
         /*        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
