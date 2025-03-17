@@ -7,17 +7,18 @@ public class FollowWho : MonoBehaviour
     [SerializeField] Transform diceTrans = null;
     [SerializeField] Vector3 offset;
     CinemachineFreeLook freeLook;
+    bool hasAssigned = false;
     private void Update()
     {
-        if (!ManageScene.isPlaying)
+        if (!ManageScene.isPlaying && hasAssigned)
         {
-            DeAssigned();
+            Assigned();
         }
-        /*if (!ManageScene.isPlaying)
+        if (!ManageScene.isPlaying && !hasAssigned)
         {
             DeAssigned();
 
-        }*/
+        }
     }
 
     void DeAssigned()
@@ -27,7 +28,7 @@ public class FollowWho : MonoBehaviour
         cin.Follow = null;
         cin.LookAt = null;
        transform.position = diceTrans.position + offset;
-        return;  //Play once to prevent constant position assignment
+        hasAssigned = false;
 
     }
     void Assigned()
@@ -35,5 +36,6 @@ public class FollowWho : MonoBehaviour
         gameObject.TryGetComponent<CinemachineFreeLook>(out CinemachineFreeLook yey);
         yey.Follow = diceTrans;
         yey.LookAt = diceTrans;
+        hasAssigned = true;
     }
 }
