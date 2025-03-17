@@ -47,6 +47,7 @@ public class MenuMvment : MonoBehaviour
         }
 
         seq = DOTween.Sequence();
+        seq.AppendInterval(1);   // Add delay instead of manually create a coroutine
         seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0, 1, 0), duration).SetEase(ease));
         seq.Join(transform.DORotate(RandRot(), duration).SetEase(ease));
         seq.OnComplete(RunSequence);
