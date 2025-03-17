@@ -7,29 +7,41 @@ public class FollowWho : MonoBehaviour
     [SerializeField] Transform diceTrans = null;
     [SerializeField] Vector3 offset;
     CinemachineFreeLook freeLook;
-    bool hasAssigned = false;
+    bool hasAssigned = true;
+
+    private void Start()
+    {
+        InitializePos();
+    }
     private void Update()
     {
-        if (!ManageScene.isPlaying && hasAssigned)
+        if (ManageScene.isPlaying)
         {
             Assigned();
         }
-        if (!ManageScene.isPlaying && !hasAssigned)
+        if (!ManageScene.isPlaying)
         {
             DeAssigned();
-
+        }
+        if (!hasAssigned)
+        {
+          //  InitializePos();
+            hasAssigned = true;
         }
     }
 
+
+    void InitializePos()
+    {
+        transform.position = diceTrans.position + offset;
+    }
     void DeAssigned()
     {
         //follow player + offset
         gameObject.TryGetComponent<CinemachineFreeLook>(out CinemachineFreeLook cin);
         cin.Follow = null;
         cin.LookAt = null;
-       transform.position = diceTrans.position + offset;
         hasAssigned = false;
-
     }
     void Assigned()
     {

@@ -45,7 +45,7 @@ public class MenuMvment : MonoBehaviour
         }
 
         var seq = DOTween.Sequence();
-        seq.Append(transform.DOMove(shufTar[target_Index].position, duration).SetEase(ease));
+        seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0,1,0), duration).SetEase(ease));
         seq.Join(transform.DORotate(RandRot(),duration).SetEase(ease));
         seq.OnComplete(RunSequence);
     }
