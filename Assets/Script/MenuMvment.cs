@@ -14,7 +14,7 @@ public class MenuMvment : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RewindTime.onPlace += RunSequence;
+        RewindTime.onPlace += DelSeq;
         ShuffleTarg();
         RunSequence();
     }
@@ -29,6 +29,7 @@ public class MenuMvment : MonoBehaviour
             (shufTar[i], shufTar[rndmIndx]) = (shufTar[rndmIndx], shufTar[i]);
         }
     }
+
     Vector3 RandRot() //method return type
     {
         return new Vector3(
@@ -36,6 +37,15 @@ public class MenuMvment : MonoBehaviour
             Random.Range(0, 360),
             Random.Range(0, 360)
             );
+    }
+    void DelSeq()
+    {
+        StartCoroutine(DelaySeq());
+    }
+    IEnumerator DelaySeq()
+    {
+        yield return new WaitForSeconds(1);
+       RunSequence();
     }
     void RunSequence()
     {
@@ -47,7 +57,7 @@ public class MenuMvment : MonoBehaviour
         }
 
         seq = DOTween.Sequence();
-        seq.AppendInterval(1);   // Add delay instead of manually create a coroutine
+     /*   seq.AppendInterval(1);*/
         seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0, 1, 0), duration).SetEase(ease));
         seq.Join(transform.DORotate(RandRot(), duration).SetEase(ease));
         seq.OnComplete(RunSequence);
@@ -59,7 +69,7 @@ public class MenuMvment : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-        RewindTime.onPlace -= RunSequence;
+        RewindTime.onPlace -= DelSeq;
     }
 
 }
