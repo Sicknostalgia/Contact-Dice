@@ -4,26 +4,26 @@ using UnityEngine;
 using Cinemachine;
 public class FollowWho : MonoBehaviour
 {
-    [SerializeField] Transform diceTrans;
+    [SerializeField] Transform diceTrans = null;
     [SerializeField] Vector3 offset;
     CinemachineFreeLook freeLook;
     private void Update()
     {
-        if (ManageScene.isPlaying)
+        if (!ManageScene.isPlaying)
         {
             Assigned();
         }
-        if (!ManageScene.isPlaying)
+        /*if (!ManageScene.isPlaying)
         {
             DeAssigned();
 
-        }
+        }*/
     }
 
     void DeAssigned()
     {
         //follow player + offset
-        transform.position = diceTrans.position + offset;
+       // transform.position = diceTrans.position + offset;
         gameObject.TryGetComponent<CinemachineFreeLook>(out CinemachineFreeLook cin);
         cin.Follow = null;
         cin.LookAt = null;
@@ -33,6 +33,6 @@ public class FollowWho : MonoBehaviour
     {
         gameObject.TryGetComponent<CinemachineFreeLook>(out CinemachineFreeLook yey);
         yey.Follow = diceTrans;
-        yey.Follow = diceTrans;
+        yey.LookAt = diceTrans;
     }
 }
