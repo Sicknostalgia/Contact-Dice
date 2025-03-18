@@ -17,7 +17,7 @@ public class FaceCollider : MonoBehaviour
     public GameObject vfx;
     // public UnityEvent<string> OnFaceDetected;
     public UnityEvent<int> OnDiceValue;
-    public CinemachineFreeLook freelookCam;
+    public CinemachineFreeLook thirdPerson;
     public CinemachineVirtualCamera topdownCam;
 
     public NumberCounter numberCounter;
@@ -35,7 +35,7 @@ public class FaceCollider : MonoBehaviour
 
     [SerializeField] GameObject decalsObj;
 
-    public static bool isAboveThreshold;
+    public bool isAboveThreshold;
     Vector3 originalPos;
     private Rigidbody rb;
     public enum NormalVector
@@ -55,7 +55,7 @@ public class FaceCollider : MonoBehaviour
     private void Start()
     {
         originalPos.y = transform.position.y;
-        isAboveThreshold = transform.position.y >= originalPos.y - 2;
+
         TryGetComponent<Rigidbody>(out rb);
         faceTex = new Dictionary<NormalVector, Texture2D>()
         {
@@ -76,7 +76,7 @@ public class FaceCollider : MonoBehaviour
             {NormalVector.back, ButGroup[5]},
         };
 
-        freelookCam.gameObject.SetActive(false);
+        thirdPerson.gameObject.SetActive(false);
 
     }
     /*public int NumEnumChange(NormalVector normVec)
@@ -255,16 +255,20 @@ public class FaceCollider : MonoBehaviour
         }*/
     void Update()
     {
-        if (rb.linearVelocity.magnitude == 0 && !isAboveThreshold)
+        if (rb.linearVelocity.magnitude == 0)
         {
-            freelookCam.gameObject.SetActive(false);
-            NormalVector face = GetColliderFace(hitNormal, transform);
-            numberCounter.Value = NumEnumChange(face);  //equivalent to face
-            Debug.Log(GetFaceDirection(face));
-            disCtrlr.UpdatePara(face);
-            panel.SetActive(true);
-            //here dialogue final value
-            //disCtrlr.ParagraphUpdate(face);
+            isAboveThreshold = transform.position.y >= originalPos.y - 2;
+            if (!isAboveThreshold)
+            {
+                thirdPerson.gameObject.SetActive(false);
+                NormalVector face = GetColliderFace(hitNormal, transform);
+                numberCounter.Value = NumEnumChange(face);  //equivalent to face
+                Debug.Log(GetFaceDirection(face));
+                disCtrlr.UpdatePara(face);
+                panel.SetActive(true);
+                //here dialogue final value
+                //disCtrlr.ParagraphUpdate(face);
+            }
         }
         /* if (rb.linearVelocity.magnitude > 0)
          {

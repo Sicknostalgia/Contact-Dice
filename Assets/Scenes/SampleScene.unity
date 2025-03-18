@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 223886283}
   - component: {fileID: 223886282}
   - component: {fileID: 223886281}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(0.00, 0.00, 300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1129,7 +1129,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 50
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -1155,8 +1155,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31864572, y: 0, z: 0, w: 0.9478739}
-  m_LocalPosition: {x: 212.4, y: 252.5, z: 96.5}
+  m_LocalRotation: {x: 0.54024035, y: 0, z: 0, w: 0.84151083}
+  m_LocalPosition: {x: 211.68999, y: 257.58, z: 98.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1607,7 +1607,7 @@ GameObject:
   - component: {fileID: 444437895}
   - component: {fileID: 444437894}
   - component: {fileID: 444437893}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(300.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1700,7 +1700,7 @@ GameObject:
   - component: {fileID: 454906922}
   - component: {fileID: 454906921}
   - component: {fileID: 454906920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(300.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2437,7 +2437,7 @@ GameObject:
   - component: {fileID: 656230768}
   - component: {fileID: 656230767}
   - component: {fileID: 656230766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-300.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2748,7 +2748,7 @@ GameObject:
   - component: {fileID: 829836541}
   - component: {fileID: 829836540}
   - component: {fileID: 829836539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3750,7 +3750,7 @@ GameObject:
   - component: {fileID: 980915104}
   - component: {fileID: 980915103}
   - component: {fileID: 980915102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(300.00, 0.00, 300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6168,14 +6168,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667877658}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.21680775, y: 0.7704201, z: -0.33672988, w: -0.49604464}
-  m_LocalPosition: {x: 0, y: 11.329987, z: -10}
+  m_LocalRotation: {x: 0.54024035, y: 0, z: 0, w: 0.84151083}
+  m_LocalPosition: {x: -0.71, y: 9.58, z: -2.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 287861917}
   m_Father: {fileID: 386552293}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65.4, y: 0, z: 0}
 --- !u!114 &1667877660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6681,7 +6681,7 @@ GameObject:
   - component: {fileID: 1809297472}
   - component: {fileID: 1809297471}
   - component: {fileID: 1809297470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-300.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7003,7 +7003,7 @@ GameObject:
   - component: {fileID: 1840917924}
   - component: {fileID: 1840917923}
   - component: {fileID: 1840917922}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(0.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7711,7 +7711,7 @@ GameObject:
   - component: {fileID: 2018030263}
   - component: {fileID: 2018030262}
   - component: {fileID: 2018030261}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-300.00, 0.00, 300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8501,7 +8501,7 @@ MonoBehaviour:
   OnDiceValue:
     m_PersistentCalls:
       m_Calls: []
-  freelookCam: {fileID: 1936621314}
+  thirdPerson: {fileID: 0}
   topdownCam: {fileID: 1667877660}
   numberCounter: {fileID: 334235439}
   normVec: 0
@@ -8521,6 +8521,7 @@ MonoBehaviour:
   panel: {fileID: 955308043}
   disCtrlr: {fileID: 963349121}
   decalsObj: {fileID: 1807550140}
+  isAboveThreshold: 0
 --- !u!114 &8344526435792524698
 MonoBehaviour:
   m_ObjectHideFlags: 0
