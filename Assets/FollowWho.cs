@@ -24,11 +24,11 @@ public class FollowWho : MonoBehaviour
         {
             DeAssigned();
         }*/
-        if (!hasAssigned)
+      /*  if (!hasAssigned)
         {
           //  InitializePos();
             hasAssigned = true;
-        }
+        }*/
     }
     void InitializePos()
     {

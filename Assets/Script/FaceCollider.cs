@@ -18,7 +18,7 @@ public class FaceCollider : MonoBehaviour
     // public UnityEvent<string> OnFaceDetected;
     public UnityEvent<int> OnDiceValue;
     public CinemachineFreeLook freelookCam;
-    public CinemachineFreeLook topdownCam;
+    public CinemachineVirtualCamera topdownCam;
 
     public NumberCounter numberCounter;
     public NormalVector normVec;
@@ -37,6 +37,7 @@ public class FaceCollider : MonoBehaviour
 
     public static bool isAboveThreshold;
     Vector3 originalPos;
+    private Rigidbody rb;
     public enum NormalVector
     {
         right,
@@ -55,7 +56,7 @@ public class FaceCollider : MonoBehaviour
     {
         originalPos.y = transform.position.y;
         isAboveThreshold = transform.position.y >= originalPos.y - 2;
-
+        TryGetComponent<Rigidbody>(out rb);
         faceTex = new Dictionary<NormalVector, Texture2D>()
         {
             {NormalVector.right,Texture2DRight },
@@ -247,31 +248,28 @@ public class FaceCollider : MonoBehaviour
         style.normal.textColor = color;
         UnityEditor.Handles.Label(end, label, style);
     }
-/*    private bool hasResult = false;
-    public void ToggleHasResult()  //off on
-    {
-        hasResult = !hasResult;
-    }*/
+    /*    private bool hasResult = false;
+        public void ToggleHasResult()  //off on
+        {
+            hasResult = !hasResult;
+        }*/
     void Update()
     {
-        if (gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        if (rb.linearVelocity.magnitude == 0 && !isAboveThreshold)
         {
-            if (rb.linearVelocity.magnitude == 0 && isAboveThreshold)
-            {
-                freelookCam.gameObject.SetActive(false);
-                NormalVector face = GetColliderFace(hitNormal, transform);
-                numberCounter.Value = NumEnumChange(face);  //equivalent to face
-                Debug.Log(GetFaceDirection(face));
-                disCtrlr.UpdatePara(face);
-                panel.SetActive(true);
-                //here dialogue final value
-                //disCtrlr.ParagraphUpdate(face);
-            }
-            /* if (rb.linearVelocity.magnitude > 0)
-             {
-                 hasResult = false;
-             }*/
+            freelookCam.gameObject.SetActive(false);
+            NormalVector face = GetColliderFace(hitNormal, transform);
+            numberCounter.Value = NumEnumChange(face);  //equivalent to face
+            Debug.Log(GetFaceDirection(face));
+            disCtrlr.UpdatePara(face);
+            panel.SetActive(true);
+            //here dialogue final value
+            //disCtrlr.ParagraphUpdate(face);
         }
+        /* if (rb.linearVelocity.magnitude > 0)
+         {
+             hasResult = false;
+         }*/
         /*        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
                 DrawArrow(transform.position, -transform.right, Color.red);  // Left (-X)
                 DrawArrow(transform.position, transform.up, Color.green);    // Top (+Y)
