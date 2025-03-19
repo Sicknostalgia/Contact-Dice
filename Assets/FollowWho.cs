@@ -7,33 +7,41 @@ public class FollowWho : MonoBehaviour
     [SerializeField] Transform diceTrans = null;
     [SerializeField] Vector3 offset;
     CinemachineVirtualCamera topDownVirt;
-    public bool hasAssigned = true;
+    Transform origTrans;
+/*    public static bool hasAssigned = true;*/
     private void Start()
     {
         RewindTime.onPlace += DeAssigned;
         InitializePos();
+        origTrans.position = transform.position + offset;
+        origTrans.rotation = transform.rotation;
         TryGetComponent<CinemachineVirtualCamera>(out topDownVirt);
     }
     private void Update()
     {
-
+/*
         if (hasAssigned)
         {
             DeAssigned();
             hasAssigned = false;
-        }
+        }*/
 
     }
+    
     public void InitializePos()
     {
         transform.position = diceTrans.position + offset;
     }
+
+    void Back() { 
+    }
     public void DeAssigned()
     {
-        //follow player + offset  
+        //follow player + offset 
+        transform.position = origTrans.position;
+        transform.rotation = origTrans.rotation;
         topDownVirt.Follow = null;
         topDownVirt.LookAt = null;
-        InitializePos();
     }
     public void Assigned()
     {
