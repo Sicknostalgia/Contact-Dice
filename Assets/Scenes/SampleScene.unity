@@ -4425,7 +4425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceTrans: {fileID: 8344526435792524694}
   offset: {x: 0, y: 15, z: -7}
-  hasAssigned: 1
 --- !u!1 &1167630687
 GameObject:
   m_ObjectHideFlags: 0
@@ -6027,7 +6026,6 @@ GameObject:
   - component: {fileID: 1623918575}
   - component: {fileID: 1623918574}
   - component: {fileID: 1623918578}
-  - component: {fileID: 1623918579}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6151,19 +6149,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &1623918579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623918573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72eb2b578d1f8594281cbe0f8f2e6e6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons: {fileID: 0}
 --- !u!1001 &1634156128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6917,7 +6902,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceTrans: {fileID: 8344526435792524694}
   offset: {x: 0, y: 15, z: -7}
-  hasAssigned: 1
 --- !u!1001 &1701672441
 PrefabInstance:
   m_ObjectHideFlags: 0
