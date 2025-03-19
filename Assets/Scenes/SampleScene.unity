@@ -2254,6 +2254,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 971539381063714477}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &532345147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9171,7 +9183,6 @@ MonoBehaviour:
   panel: {fileID: 955308043}
   disCtrlr: {fileID: 963349121}
   decalsObj: {fileID: 1807550140}
-  isAboveThreshold: 0
 --- !u!114 &8344526435792524698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9198,6 +9209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRewinding: 0
   rb: {fileID: 0}
+  menuMvmnt: {fileID: 8344526435792524701}
   faceCol: {fileID: 8344526435792524697}
   freeLook: {fileID: 1936621314}
 --- !u!114 &8344526435792524700

@@ -51,7 +51,7 @@ public class MenuMvment : MonoBehaviour
        RunSequence();
         rb.isKinematic = false;
     }
-    void RunSequence()
+    public void RunSequence()
     {
         ++target_Index;
         if (target_Index == shufTar.Count)

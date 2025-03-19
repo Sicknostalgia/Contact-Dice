@@ -45,17 +45,17 @@ public class RewindTime : MonoBehaviour
         onPlace?.Invoke();
 
     }
-/*    public static void TrigNotOnPlace() //placing event to this make it scalable
-    {
-        notOnPlace?.Invoke();
-    }*/
+    /*    public static void TrigNotOnPlace() //placing event to this make it scalable
+        {
+            notOnPlace?.Invoke();
+        }*/
 
     private void Update()
     {
-     /*   if (Input.GetKey(KeyCode.Space))
-        {
-            Rewind();
-        }*/
+        /*   if (Input.GetKey(KeyCode.Space))
+           {
+               Rewind();
+           }*/
     }
 
     IEnumerator Rewind()
@@ -98,14 +98,14 @@ public class RewindTime : MonoBehaviour
         rb.isKinematic = false;
         /*        if (transform.position.y >= originalPos.y - 2)  //above OnPlace
                 {*/
-        menuMvmnt.enabled = true;  // we can't put this on isRewinding since it needs to trigger once
-            freeLook.gameObject.SetActive(false);
-            TrigOnPlace();
-            ResetScale();
+        menuMvmnt.RunSequence();  // we can't put this on isRewinding since it needs to trigger once
+        freeLook.gameObject.SetActive(false);
+        TrigOnPlace();
+        ResetScale();
         /*}*/
-   /*     else
-        {
-            TrigNotOnPlace();
-        }*/
+        /*     else
+             {
+                 TrigNotOnPlace();
+             }*/
     }
 }
