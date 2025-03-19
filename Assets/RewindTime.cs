@@ -94,6 +94,7 @@ public class RewindTime : MonoBehaviour
     }
     public void StopRewind()
     {
+        FaceCollider.hasResult = false;
         isRewinding = false;
         rb.isKinematic = false;
         /*        if (transform.position.y >= originalPos.y - 2)  //above OnPlace

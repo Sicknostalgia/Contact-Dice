@@ -35,7 +35,7 @@ public class FaceCollider : MonoBehaviour
 
     [SerializeField] GameObject decalsObj;
 
-/*    public bool isAboveThreshold;*/
+    /*    public bool isAboveThreshold;*/
     Vector3 originalPos;
     private Rigidbody rb;
     public enum NormalVector
@@ -253,13 +253,7 @@ public class FaceCollider : MonoBehaviour
         {
             hasResult = !hasResult;
         }*/
-    bool hasResult;
-
-    public bool HasResult()
-    {
-        return false;
-    }
-
+    public static bool hasResult;
     bool isAboveThreshold()
     {
         return transform.position.y > originalPos.y - 2;
@@ -268,7 +262,7 @@ public class FaceCollider : MonoBehaviour
     {
         if (rb.linearVelocity.magnitude == 0 && !hasResult)
         {
-/*            isAboveThreshold = transform.position.y >= originalPos.y - 2;*/
+            /*            isAboveThreshold = transform.position.y >= originalPos.y - 2;*/
             if (!isAboveThreshold())
             {
                 thirdPerson.gameObject.SetActive(false);
