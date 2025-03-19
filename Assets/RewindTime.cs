@@ -12,6 +12,7 @@ public class RewindTime : MonoBehaviour
     [SerializeField]
     Rigidbody rb;
     float gradualRwind;
+    public MenuMvment menuMvmnt;
 
     [SerializeField] FaceCollider faceCol;
     [SerializeField] CinemachineFreeLook freeLook;
@@ -95,8 +96,9 @@ public class RewindTime : MonoBehaviour
     {
         isRewinding = false;
         rb.isKinematic = false;
-/*        if (transform.position.y >= originalPos.y - 2)  //above OnPlace
-        {*/
+        /*        if (transform.position.y >= originalPos.y - 2)  //above OnPlace
+                {*/
+        menuMvmnt.enabled = true;  // we can't put this on isRewinding since it needs to trigger once
             freeLook.gameObject.SetActive(false);
             TrigOnPlace();
             ResetScale();

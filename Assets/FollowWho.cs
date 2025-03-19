@@ -16,19 +16,19 @@ public class FollowWho : MonoBehaviour
     }
     private void Update()
     {
-    /*    if (ManageScene.isPlaying)
+        if (ManageScene.isPlaying)
         {
             Assigned();
         }
         if (!ManageScene.isPlaying)
         {
             DeAssigned();
-        }*/
-      /*  if (!hasAssigned)
+        }
+       if (!hasAssigned)
         {
           //  InitializePos();
             hasAssigned = true;
-        }*/
+        }
     }
     void InitializePos()
     {
