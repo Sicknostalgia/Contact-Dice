@@ -49,7 +49,7 @@ public class HexLayout : MonoBehaviour
         }
     }
 
-    private void Scatter()  // place above as UI
+    private void Scatter()  // place above as UI    and then there must be a regroup function
     {
         for (int i = 0; i < vertexPTransform.Length; i++)
         {

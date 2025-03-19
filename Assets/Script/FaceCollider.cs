@@ -16,10 +16,10 @@ public class FaceCollider : MonoBehaviour
     public LayerMask groundLayer;
     public GameObject vfx;
     // public UnityEvent<string> OnFaceDetected;
-    public UnityEvent<int> OnDiceValue;
+    public UnityEvent<int> OnDiceValue;  //int is just argument
     public CinemachineFreeLook thirdPerson;
     public CinemachineVirtualCamera topdownCam;
-
+    public RewindTime rewindTime;
     public NumberCounter numberCounter;
     public NormalVector normVec;
 
@@ -121,6 +121,7 @@ public class FaceCollider : MonoBehaviour
     }
     private float punchCD = .2f;
     private float lastPunchtime = 0;
+    public FollowWho followWHo;
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.contacts[0];
@@ -254,7 +255,7 @@ public class FaceCollider : MonoBehaviour
             hasResult = !hasResult;
         }*/
     public static bool hasResult;
-    bool isAboveThreshold()
+     bool isAboveThreshold()
     {
         return transform.position.y > originalPos.y - 2;
     }
@@ -265,13 +266,14 @@ public class FaceCollider : MonoBehaviour
             /*            isAboveThreshold = transform.position.y >= originalPos.y - 2;*/
             if (!isAboveThreshold())
             {
+                hasResult = true;
                 thirdPerson.gameObject.SetActive(false);
                 NormalVector face = GetColliderFace(hitNormal, transform);
                 numberCounter.Value = NumEnumChange(face);  //equivalent to face
                 Debug.Log(GetFaceDirection(face));
                 disCtrlr.UpdatePara(face);
                 panel.SetActive(true);
-                hasResult = true;
+                followWHo.Assigned();
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
             }
