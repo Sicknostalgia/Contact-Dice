@@ -253,9 +253,10 @@ public class FaceCollider : MonoBehaviour
         {
             hasResult = !hasResult;
         }*/
+    bool hasResult;
     void Update()
     {
-        if (rb.linearVelocity.magnitude == 0)
+        if (rb.linearVelocity.magnitude == 0 && !hasResult)
         {
             isAboveThreshold = transform.position.y >= originalPos.y - 2;
             if (!isAboveThreshold)
@@ -266,6 +267,7 @@ public class FaceCollider : MonoBehaviour
                 Debug.Log(GetFaceDirection(face));
                 disCtrlr.UpdatePara(face);
                 panel.SetActive(true);
+                hasResult = true;
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
             }
