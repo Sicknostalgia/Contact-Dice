@@ -34,7 +34,7 @@ public class FaceCollider : MonoBehaviour
     [SerializeField] DisplayTextCtrler disCtrlr;
 
     [SerializeField] GameObject decalsObj;
-
+    public Ease ease;
     /*    public bool isAboveThreshold;*/
     Vector3 originalPos;
     private Rigidbody rb;
@@ -150,7 +150,7 @@ public class FaceCollider : MonoBehaviour
             lastPunchtime = Time.time;
             originalScale = butcor.transform.localScale;
             Debug.Log(butcor.gameObject.name);
-            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .05f, 1).SetEase(Ease.OutBounce).OnComplete(() => butcor.transform.DOScale(originalScale, .01f));
+            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .5f, 1).SetEase(ease).OnComplete(() => butcor.transform.DOScale(originalScale, .01f));
         }
     }
     void VFXImpactTex(Vector3 fDirection, NormalVector f)
