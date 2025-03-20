@@ -44,10 +44,10 @@ public class RewindTime : MonoBehaviour
         onPlace?.Invoke();
 
     }
-    /*    public static void TrigNotOnPlace() //placing event to this make it scalable
+       public static void TrigNotOnPlace() //placing event to this make it scalable
         {
             notOnPlace?.Invoke();
-        }*/
+        }
 
     private void Update()
     {
@@ -95,6 +95,7 @@ public class RewindTime : MonoBehaviour
     public void StopRewind()
     {
         FaceCollider.hasResult = false;
+        HoverOverPlayer.isPlaying = false;
         isRewinding = false;
         rb.isKinematic = false;
         /*        if (transform.position.y >= originalPos.y - 2)  //above OnPlace

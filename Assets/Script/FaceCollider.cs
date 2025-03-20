@@ -177,7 +177,7 @@ public class FaceCollider : MonoBehaviour
         return faceTex.TryGetValue(face, out Texture2D texture2D) ? texture2D : null;
     }
 
-    void DetectFace()
+/*    void DetectFace()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -191,7 +191,7 @@ public class FaceCollider : MonoBehaviour
             NormalVector face = GetColliderFace(hit.normal, transform);
             Debug.Log("Hit face: " + face);
         }
-    }
+    }*/
     Vector3 GetFaceDirection(NormalVector norm)
     {
         switch (norm)
@@ -255,7 +255,7 @@ public class FaceCollider : MonoBehaviour
             hasResult = !hasResult;
         }*/
     public static bool hasResult;
-     bool isAboveThreshold()
+    bool isAboveThreshold()
     {
         return transform.position.y > originalPos.y - 2;
     }
@@ -263,7 +263,7 @@ public class FaceCollider : MonoBehaviour
     {
         if (rb.linearVelocity.magnitude == 0 && !hasResult)
         {
-            /*            isAboveThreshold = transform.position.y >= originalPos.y - 2;*/
+            /*isAboveThreshold = transform.position.y >= originalPos.y - 2;*/
             if (!isAboveThreshold())
             {
                 hasResult = true;
@@ -273,7 +273,7 @@ public class FaceCollider : MonoBehaviour
                 Debug.Log(GetFaceDirection(face));
                 disCtrlr.UpdatePara(face);
                 panel.SetActive(true);
-                followWHo.Assigned();
+                followWHo.InitializePos();
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
             }

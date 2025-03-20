@@ -8937,7 +8937,6 @@ GameObject:
   - component: {fileID: 8344526435792524696}
   - component: {fileID: 8344526435792524697}
   - component: {fileID: 8344526435792524699}
-  - component: {fileID: 8344526435792524700}
   - component: {fileID: 8344526435792524701}
   - component: {fileID: 8344526435792524702}
   m_Layer: 7
@@ -9338,34 +9337,6 @@ MonoBehaviour:
   menuMvmnt: {fileID: 8344526435792524701}
   faceCol: {fileID: 8344526435792524697}
   freeLook: {fileID: 1936621314}
---- !u!114 &8344526435792524700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971539381063714477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c606950e776fdb4e891b4c7f1fa79ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startAnimation1Key: 273
-  startAnimation2Key: 274
-  resetAnimationKey: 0
-  moveTarget: {x: 212.4, y: 248, z: 101.5}
-  moveTime: 1
-  rotationTarget: {x: -31.92, y: 0, z: 0}
-  rotationTime: 1
-  scaleTarget: {x: 1, y: 1, z: 1}
-  scaleTime: 1
-  moveTarget2: {x: 0, y: 0, z: 0}
-  moveTime2: 0
-  rotationTarget2: {x: 0, y: 0, z: 0}
-  rotationTime2: 0
-  scaleTarget2: {x: 0, y: 0, z: 0}
-  scaleTime2: 0
-  animationEase2: 24
 --- !u!114 &8344526435792524701
 MonoBehaviour:
   m_ObjectHideFlags: 0

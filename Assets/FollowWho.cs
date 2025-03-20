@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 public class FollowWho : MonoBehaviour
 {
-    [SerializeField] Transform diceTrans = null;
+    [SerializeField] Transform diceTrans;
     [SerializeField] Vector3 offset;
     CinemachineVirtualCamera topDownVirt;
     Transform origTrans;
@@ -38,10 +38,10 @@ public class FollowWho : MonoBehaviour
     public void DeAssigned()
     {
         //follow player + offset 
-        transform.position = origTrans.position;
-        transform.rotation = origTrans.rotation;
         topDownVirt.Follow = null;
         topDownVirt.LookAt = null;
+        transform.position = origTrans.position;
+        transform.rotation = origTrans.rotation;
     }
     public void Assigned()
     {
