@@ -273,7 +273,8 @@ public class FaceCollider : MonoBehaviour
                 Debug.Log(GetFaceDirection(face));
                 disCtrlr.UpdatePara(face);
                 panel.SetActive(true);
-                followWHo.InitializePos();
+                followWHo.Assigned();
+                Debug.Log(followWHo.gameObject.transform);
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
             }

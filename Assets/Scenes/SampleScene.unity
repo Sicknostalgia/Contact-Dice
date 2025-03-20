@@ -1264,8 +1264,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.54024035, y: 0, z: 0, w: 0.84151083}
-  m_LocalPosition: {x: 211.68999, y: 257.58, z: 98.52}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
+  m_LocalPosition: {x: 212.4, y: 248, z: 101.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4424,7 +4424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceTrans: {fileID: 8344526435792524694}
-  offset: {x: 0, y: 15, z: -7}
+  offset: {x: 0, y: 0, z: 0}
+  origTrans: {fileID: 0}
 --- !u!1 &1167630687
 GameObject:
   m_ObjectHideFlags: 0
@@ -6841,14 +6842,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667877658}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.54024035, y: 0, z: 0, w: 0.84151083}
-  m_LocalPosition: {x: -0.71, y: 9.58, z: -2.98}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 287861917}
   m_Father: {fileID: 386552293}
-  m_LocalEulerAnglesHint: {x: 65.4, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!114 &1667877660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6902,6 +6903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceTrans: {fileID: 8344526435792524694}
   offset: {x: 0, y: 15, z: -7}
+  origTrans: {fileID: 0}
 --- !u!1001 &1701672441
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class FollowWho : MonoBehaviour
     [SerializeField] Transform diceTrans;
     [SerializeField] Vector3 offset;
     CinemachineVirtualCamera topDownVirt;
-    Transform origTrans;
+    public Transform origTrans;
 /*    public static bool hasAssigned = true;*/
     private void Start()
     {
@@ -32,7 +32,6 @@ public class FollowWho : MonoBehaviour
     {
         transform.position = diceTrans.position + offset;
     }
-
     void Back() { 
     }
     public void DeAssigned()
@@ -40,8 +39,7 @@ public class FollowWho : MonoBehaviour
         //follow player + offset 
         topDownVirt.Follow = null;
         topDownVirt.LookAt = null;
-        transform.position = origTrans.position;
-        transform.rotation = origTrans.rotation;
+
     }
     public void Assigned()
     {
