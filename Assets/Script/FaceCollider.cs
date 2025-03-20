@@ -9,20 +9,31 @@ using Cinemachine;
 
 public class FaceCollider : MonoBehaviour
 {
+    [Header("Face Normal Calculation")]
     private Vector3 hitPoint;
     private Vector3 hitNormal;
-    public Vector3 originalScale;
     private bool hitDetected = false;
     public LayerMask groundLayer;
-    public GameObject vfx;
-    // public UnityEvent<string> OnFaceDetected;
     public UnityEvent<int> OnDiceValue;  //int is just argument
+
+
+    // public UnityEvent<string> OnFaceDetected;
+    [Header("Cameras")]
     public CinemachineFreeLook thirdPerson;
     public CinemachineVirtualCamera topdownCam;
+
+    [Header("OtherReferences")]
     public RewindTime rewindTime;
     public NumberCounter numberCounter;
     public NormalVector normVec;
+    [SerializeField] DisplayTextCtrler disCtrlr;
+    [SerializeField] GameObject decalsObj;
+    public GameObject vfx;
+    public GameObject panel;
+    public FollowWho followWHo;
+    private Rigidbody rb;
 
+    [Header("Textures")]
     public Texture2D Texture2DRight;
     public Texture2D Texture2DLeft;
     public Texture2D Texture2DTop;
@@ -30,14 +41,15 @@ public class FaceCollider : MonoBehaviour
     public Texture2D Texture2DFront;
     public Texture2D Texture2DBack;
     public Button[] ButGroup;
-    public GameObject panel;
-    [SerializeField] DisplayTextCtrler disCtrlr;
 
-    [SerializeField] GameObject decalsObj;
-    public Ease ease;
-    /*    public bool isAboveThreshold;*/
+    [Header("DOTweening")]
+    private float punchCD = .2f;
+    private float lastPunchtime = 0;
+    public static bool hasResult;
+    public Vector3 originalScale;
     Vector3 originalPos;
-    private Rigidbody rb;
+    public Ease ease;
+
     public enum NormalVector
     {
         right,
@@ -119,9 +131,7 @@ public class FaceCollider : MonoBehaviour
 
         }
     }
-    private float punchCD = .2f;
-    private float lastPunchtime = 0;
-    public FollowWho followWHo;
+
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.contacts[0];
@@ -177,21 +187,21 @@ public class FaceCollider : MonoBehaviour
         return faceTex.TryGetValue(face, out Texture2D texture2D) ? texture2D : null;
     }
 
-/*    void DetectFace()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+    /*    void DetectFace()
         {
-            hitPoint = hit.point;
-            hitNormal = hit.normal;
-            hitDetected = true;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-            NormalVector face = GetColliderFace(hit.normal, transform);
-            Debug.Log("Hit face: " + face);
-        }
-    }*/
+            if (Physics.Raycast(ray, out hit))
+            {
+                hitPoint = hit.point;
+                hitNormal = hit.normal;
+                hitDetected = true;
+
+                NormalVector face = GetColliderFace(hit.normal, transform);
+                Debug.Log("Hit face: " + face);
+            }
+        }*/
     Vector3 GetFaceDirection(NormalVector norm)
     {
         switch (norm)
@@ -254,7 +264,7 @@ public class FaceCollider : MonoBehaviour
         {
             hasResult = !hasResult;
         }*/
-    public static bool hasResult;
+
     bool isAboveThreshold()
     {
         return transform.position.y > originalPos.y - 2;
