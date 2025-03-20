@@ -14,7 +14,7 @@ public class FaceCollider : MonoBehaviour
     private Vector3 hitNormal;
     private bool hitDetected = false;
     public LayerMask groundLayer;
-    public UnityEvent<int> OnDiceValue;  //int is just argument
+    //public UnityEvent<int> OnDiceValue;  //int is just argument
 
 
     // public UnityEvent<string> OnFaceDetected;
@@ -33,7 +33,7 @@ public class FaceCollider : MonoBehaviour
     public FollowWho followWHo;
     private Rigidbody rb;
 
-    [Header("Textures")]
+    [Header("Textures and Buttons")]
     public Texture2D Texture2DRight;
     public Texture2D Texture2DLeft;
     public Texture2D Texture2DTop;
@@ -161,7 +161,7 @@ public class FaceCollider : MonoBehaviour
             lastPunchtime = Time.time;
             originalScale = butcor.transform.localScale;
             Debug.Log(butcor.gameObject.name);
-            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .5f, 1).SetEase(ease).OnComplete(() => butcor.transform.DOScale(originalScale, .01f));
+            butcor.transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1), .2f, 1).SetEase(ease).OnComplete(() => butcor.transform.DOScale(originalScale, .01f));
         }
     }
     void VFXImpactTex(Vector3 fDirection, NormalVector f)
