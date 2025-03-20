@@ -277,7 +277,6 @@ public class FaceCollider : MonoBehaviour
             if (!isAboveThreshold())
             {
                 hasResult = true;
-                HoverOverPlayer.isPlaying = false;
                 thirdPerson.gameObject.SetActive(false);
                 NormalVector face = GetColliderFace(hitNormal, transform);
                 numberCounter.Value = NumEnumChange(face);  //equivalent to face
