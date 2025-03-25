@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
-
+using System;
 public class HoverOverPlayer : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
 {
     public Material selectionOutlineMat;
     bool isPointerInside = false;
     [SerializeField] float value;
-    public UnityEvent onPointerEnter;
-    public UnityEvent onPointerExit;
+    public static event Action onPointerEnter;
+    public static event Action onPointerExit;
     public UnityEvent onPointerClick;
 
     public static bool isPlaying = false;

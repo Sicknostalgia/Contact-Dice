@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8928159054878668680}
   - component: {fileID: 8928159054878668695}
   - component: {fileID: 8928159054878668694}
+  - component: {fileID: -2322505946728019978}
   m_Layer: 0
   m_Name: sparkCollisionVFX
   m_TagString: Untagged
@@ -59,7 +60,7 @@ VisualEffect:
       m_Array:
       - m_Value: {x: 0.8, y: 4, z: 2.7137256, w: 0}
         m_Name: Color1
-        m_Overridden: 0
+        m_Overridden: 1
       - m_Value: {x: 0.5968748, y: 0.7490194, z: 0.7490194, w: 1}
         m_Name: spark
         m_Overridden: 1
@@ -75,7 +76,10 @@ VisualEffect:
       m_Array: []
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: 2800000, guid: 38e5a397666ea0146b995e01668418f4, type: 3}
+      - m_Value: {fileID: 2800000, guid: ef6433ecf78576f45901341fc39ac92c, type: 3}
+        m_Name: diceNumTex
+        m_Overridden: 0
+      - m_Value: {fileID: 2800000, guid: 714ce62937d0b41448f159ad2bc6be60, type: 3}
         m_Name: MainTex
         m_Overridden: 1
     m_Bool:
@@ -123,3 +127,15 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-2322505946728019978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928159054878668693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c36902a5e5b07642b3aeb986cc8d9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

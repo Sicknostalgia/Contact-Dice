@@ -24,7 +24,7 @@ public class FaceCollider : MonoBehaviour
 
     [Header("OtherReferences")]
     public RewindTime rewindTime;
-    public NumberCounter numberCounter;
+   // public NumberCounter numberCounter;
     public NormalVector normVec;
     [SerializeField] DisplayTextCtrler disCtrlr;
     [SerializeField] GameObject decalsObj;
@@ -94,9 +94,10 @@ public class FaceCollider : MonoBehaviour
 
     public void ButDicDisappear()
     {
+        Debug.Log("ButDic");
         foreach (var button in butDic.Values)
         {
-            button.transform.DOScale(0, 0.5f).SetEase(Ease.InBounce);
+            button.transform.DOScale(0, 0.5f).SetEase(Ease.OutBounce);
         }
     }
     void ButDicReappear()
@@ -157,7 +158,7 @@ public class FaceCollider : MonoBehaviour
         NormalVector face = GetColliderFace(hitNormal, transform); //this calculate the final normal vector result, failed to reference this wont change your value on the following line
         Debug.Log(face);
         Vector3 faceDirection = GetFaceDirection(face);
-        numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
+       // numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
         butcor = GetButton(face);
 
         BtnReact();
@@ -294,13 +295,13 @@ public class FaceCollider : MonoBehaviour
                 hasResult = true;
                 thirdPerson.gameObject.SetActive(false);
                 NormalVector face = GetColliderFace(hitNormal, transform);
-                numberCounter.Value = NumEnumChange(face);  //equivalent to face
+               // numberCounter.Value = NumEnumChange(face);  //equivalent to face
+               ButDicDisappear();
                 Debug.Log(GetFaceDirection(face));
                 disCtrlr.UpdatePara(face);
                 panel.SetActive(true);
                 followWHo.Assigned();
                 Debug.Log(followWHo.gameObject.transform);
-                ButDicReappear();
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
             }

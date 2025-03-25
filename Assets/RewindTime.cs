@@ -79,15 +79,6 @@ public class RewindTime : MonoBehaviour
         isRewinding = true;
         StartCoroutine(Rewind());
         rb.isKinematic = true;
-        ResetScale();
-    }
-    void ResetScale()
-    {
-        //seperate this as well
-        for (int i = 0; i < faceCol.ButGroup.Length; i++)  //reset the scale of the button ui
-        {
-            faceCol.ButGroup[i].transform.localScale = faceCol.originalScale;
-        }
     }
     public void StopRewind()
     {
