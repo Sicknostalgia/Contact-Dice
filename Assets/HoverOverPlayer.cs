@@ -32,6 +32,7 @@ public class HoverOverPlayer : MonoBehaviour,IPointerClickHandler,IPointerEnterH
         if (isPlaying) return;
         onPointerClick?.Invoke();
         selectionOutlineMat.SetFloat("_scale", 0); // Modify shader variable
+        RewindTime.TrigNotOnPlace();
         isPlaying = true;
     }
 }

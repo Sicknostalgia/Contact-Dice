@@ -67,8 +67,8 @@ public class FaceCollider : MonoBehaviour
     private void Start()
     {
         originalPos.y = transform.position.y;
-
         TryGetComponent<Rigidbody>(out rb);
+        RewindTime.notOnPlace += ButDicReappear;
         faceTex = new Dictionary<NormalVector, Texture2D>()
         {
             {NormalVector.right,Texture2DRight },
@@ -90,6 +90,21 @@ public class FaceCollider : MonoBehaviour
 
         thirdPerson.gameObject.SetActive(false);
 
+    }
+
+    public void ButDicDisappear()
+    {
+        foreach (var button in butDic.Values)
+        {
+            button.transform.DOScale(0, 0.5f).SetEase(Ease.InBounce);
+        }
+    }
+    void ButDicReappear()
+    {
+        foreach (var button in butDic.Values)
+        {
+            button.transform.DOScale(1, 0.5f).SetEase(Ease.OutBounce);
+        }
     }
     /*public int NumEnumChange(NormalVector normVec)
     {
@@ -285,6 +300,7 @@ public class FaceCollider : MonoBehaviour
                 panel.SetActive(true);
                 followWHo.Assigned();
                 Debug.Log(followWHo.gameObject.transform);
+                ButDicReappear();
                 //here dialogue final value
                 //disCtrlr.ParagraphUpdate(face);
             }
@@ -313,6 +329,11 @@ public class FaceCollider : MonoBehaviour
         Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -150, 0) * Vector3.forward;
         Debug.DrawLine(end, end + right * 0.3f, color);
         Debug.DrawLine(end, end + left * 0.3f, color);
+    }
+
+    private void OnApplicationQuit()
+    {
+        RewindTime.notOnPlace -= ButDicReappear;
     }
 }
 

@@ -25,11 +25,8 @@ public class RewindTime : MonoBehaviour
     public static event Action notOnPlace;
     void Start()
     {
-
         pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
-
-
     }
     void FixedUpdate()
     {
@@ -44,10 +41,10 @@ public class RewindTime : MonoBehaviour
         onPlace?.Invoke();
 
     }
-       public static void TrigNotOnPlace() //placing event to this make it scalable
-        {
-            notOnPlace?.Invoke();
-        }
+    public static void TrigNotOnPlace() //placing event to this make it scalable
+    {
+        notOnPlace?.Invoke();
+    }
 
     private void Update()
     {
