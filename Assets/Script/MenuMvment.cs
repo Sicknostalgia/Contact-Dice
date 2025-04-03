@@ -62,11 +62,14 @@ public class MenuMvment : MonoBehaviour
 
         seq = DOTween.Sequence();
      /*   seq.AppendInterval(1);*/
-        seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0, 1, 0), duration).SetEase(ease));
+        seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0, 1, 0), duration).SetEase(ease)).OnStepComplete(() => OnReachTarget(target_Index));
         seq.Join(transform.DORotate(RandRot(), duration).SetEase(ease));
         seq.OnComplete(RunSequence);
     }
-
+    public void OnReachTarget(int index)
+    {
+        //shake text
+    }
     public void StopSeq()
     {
         seq.Kill();
