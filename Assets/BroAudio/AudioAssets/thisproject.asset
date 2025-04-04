@@ -56,5 +56,48 @@ MonoBehaviour:
       BPM: 0
       Beats: 0
     SnapToFullVolume: 0
+  - <Name>k__BackingField: Boinks
+    <ID>k__BackingField: 1073741838
+    MulticlipsPlayMode: 2
+    Clips:
+    - AudioClip: {fileID: 8300000, guid: b42b2581d7b2fac4abe3a3ea0481b46e, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 0.231
+      EndPosition: 8.857
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: b42b2581d7b2fac4abe3a3ea0481b46e, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 3.024
+      EndPosition: 5.846
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
+    - AudioClip: {fileID: 8300000, guid: b42b2581d7b2fac4abe3a3ea0481b46e, type: 3}
+      Volume: 1
+      Delay: 0
+      StartPosition: 6.742
+      EndPosition: 2.245
+      FadeIn: 0
+      FadeOut: 0
+      Weight: 0
+    <MasterVolume>k__BackingField: 1
+    <Loop>k__BackingField: 0
+    <SeamlessLoop>k__BackingField: 0
+    <TransitionTime>k__BackingField: 0
+    <SpatialSetting>k__BackingField: {fileID: 0}
+    <Priority>k__BackingField: 128
+    <Pitch>k__BackingField: 1
+    <PitchRandomRange>k__BackingField: 0
+    <VolumeRandomRange>k__BackingField: 0
+    <RandomFlags>k__BackingField: 0
+    SeamlessTransitionType: 0
+    TransitionTempo:
+      BPM: 0
+      Beats: 0
+    SnapToFullVolume: 0
   <AssetName>k__BackingField: thisproject
   _assetGUID: 69a9d3c1875e8454a8a27644e99a1c47

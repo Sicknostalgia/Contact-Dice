@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using System;
+using DG.Tweening;
 public class HoverOverPlayer : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
 {
     public Material selectionOutlineMat;
@@ -18,6 +19,7 @@ public class HoverOverPlayer : MonoBehaviour,IPointerClickHandler,IPointerEnterH
         onPointerEnter?.Invoke();
         isPointerInside = true;
         selectionOutlineMat.SetFloat("_scale", value); // Modify shader variable
+        transform.DOScale(1,.01f);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -25,6 +27,7 @@ public class HoverOverPlayer : MonoBehaviour,IPointerClickHandler,IPointerEnterH
         onPointerExit?.Invoke();
         isPointerInside = false;
         selectionOutlineMat.SetFloat("_scale", 0); // Modify shader variable
+        transform.DOScale(.7f, .01f);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -32,6 +35,7 @@ public class HoverOverPlayer : MonoBehaviour,IPointerClickHandler,IPointerEnterH
         if (isPlaying) return;
         onPointerClick?.Invoke();
         selectionOutlineMat.SetFloat("_scale", 0); // Modify shader variable
+        transform.DOScale(.7f, .01f);
         RewindTime.TrigNotOnPlace();
         isPlaying = true;
     }

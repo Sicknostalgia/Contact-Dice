@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.Linq;
+using Ami.BroAudio;
 public class MenuMvment : MonoBehaviour
 {
+    [SerializeField] SoundID boinkSnd;
     [SerializeField] List<Transform> targets;
     private List<Transform> shufTar;
     int target_Index = -1;
@@ -62,14 +64,25 @@ public class MenuMvment : MonoBehaviour
 
         seq = DOTween.Sequence();
      /*   seq.AppendInterval(1);*/
-        seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0, 1, 0), duration).SetEase(ease)).OnStepComplete(() => OnReachTarget(target_Index));
+        seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0, 1, 0), duration).SetEase(ease)).OnStepComplete(() => OnReachedTarget(target_Index));
         seq.Join(transform.DORotate(RandRot(), duration).SetEase(ease));
         seq.OnComplete(RunSequence);
     }
-    public void OnReachTarget(int index)
+    void OnReachedTarget(int index)  //when player traverse to specific words in menu
     {
-        //shake text
+        Debug.Log("Reached target index: " + index);
+
+        // Get the child of the target transform
+        Transform child = shufTar[index].GetChild(0); // Assuming it has at least one child
+        if (child == null) return;
+
+        // Apply a shake effect to the child (glitch effect)
+        child.DOShakePosition(0.5f, strength: 0.2f, vibrato: 20, randomness: 90);
+        child.DOShakeRotation(0.5f, strength: new Vector3(0, 0, 10), vibrato: 10, randomness: 90);
+        child.DOPunchScale(Vector3.one * 0.2f, 0.3f, 10, 1); // Quick scale punch
+        BroAudio.Play(boinkSnd);
     }
+
     public void StopSeq()
     {
         seq.Kill();
