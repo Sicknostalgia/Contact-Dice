@@ -8,7 +8,7 @@ public class VolumeController : MonoBehaviour
 {
     public Image[] volumeBars;
     public float volume = 0.5f;
-    private float step = 1f / 7f;
+    private float step = 1f / 8f;
     //    [SerializeField] SoundManagerSO soundManagerSO;
     public enum AudioType
     {
@@ -42,7 +42,7 @@ public class VolumeController : MonoBehaviour
         {
             if (i < activeBars)
             {
-                volumeBars[i].color = new Color(145 / 255f, 146 / 255f, 132 / 255f);  //custom grey  r/a,g/a,b/a
+                volumeBars[i].color = new Color(247 / 255f, 230 / 255f, 178 / 255f);  //custom grey  r/a,g/a,b/a
             }
             else
             {

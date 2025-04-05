@@ -30,7 +30,7 @@ public class HoverOverBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (button.IsInteractable())
         {
             isHovered = true;
-            transform.DOScale(1.1f, .05f).SetEase(easeType);
+            transform.DOScale(defaultScale * scaleModifier, .05f).SetEase(easeType);
         }
     }
 
