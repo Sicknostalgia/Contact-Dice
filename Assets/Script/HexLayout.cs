@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class HexLayout : MonoBehaviour
 {
-    public Transform[] vertexPTransform;
+    public Transform[] hexTransform;
+    public Transform[] squareTransform;
     public Transform foundation;
     public float radius = 5f;
     public Ease ease;
@@ -13,17 +14,18 @@ public class HexLayout : MonoBehaviour
     {
         //SetDefaultScale();
         FormHexagon();
+        ForSquare();
         RewindTime.onPlace += FormHexagon;
         RewindTime.notOnPlace += Scatter;
     }
     void FormHexagon()
     {
-        if (vertexPTransform.Length != 6)
+        if (hexTransform.Length != 6)
         {
             Debug.LogError("More/less than 6");
             return;
         }
-        for (int i = 0; i < vertexPTransform.Length; i++)
+        for (int i = 0; i < hexTransform.Length; i++)
         {
             float angle = i * 60 * Mathf.Deg2Rad;  // Convert deg to rad since we will use mathf.Cos/Sin
             Vector3 position = new Vector3(
@@ -31,29 +33,47 @@ public class HexLayout : MonoBehaviour
                 foundation.position.y,
                 foundation.position.z + Mathf.Sin(angle) * radius);
 
-            vertexPTransform[i].position = position;
-            vertexPTransform[i].DOScale(1, .5f).SetEase(ease);
+            hexTransform[i].position = position;
+            hexTransform[i].DOScale(1, .5f).SetEase(ease);
         }
 
     }
+    void ForSquare()
+    {
+        if (squareTransform.Length <= 1)
+        {
+            Debug.Log("Less than one");
+            return;
+        }
+        for (int i = 0; i < squareTransform.Length; i++)
+        {
+            float angle = i * 90 * Mathf.Deg2Rad;
+
+            Vector3 pos = new Vector3(foundation.position.x + Mathf.Cos(angle) * radius, foundation.position.y,
+                foundation.position.z + Mathf.Sin(angle) * radius);
+
+            squareTransform[i].position = pos;
+            squareTransform[i].DOScale(1, .5f).SetEase(ease);
+        }
+    }
     private void Update() //looking to camera anytime
     {
-        for (int i = 0; i < vertexPTransform.Length; i++)
+        for (int i = 0; i < hexTransform.Length; i++)
         {
-            vertexPTransform[i].LookAt(Camera.main.transform);
-            Vector3 dirToCamera = Camera.main.transform.position + vertexPTransform[i].position;
+            hexTransform[i].LookAt(Camera.main.transform);
+            Vector3 dirToCamera = Camera.main.transform.position + hexTransform[i].position;
             dirToCamera.x = 0f;
             dirToCamera.y = -360f;
 
-            vertexPTransform[i].rotation = Quaternion.LookRotation(dirToCamera);
+            hexTransform[i].rotation = Quaternion.LookRotation(dirToCamera);
         }
     }
 
     private void Scatter()  // place above as UI    and then there must be a regroup function
     {
-        for (int i = 0; i < vertexPTransform.Length; i++)
+        for (int i = 0; i < hexTransform.Length; i++)
         {
-            vertexPTransform[i].DOScale(0, .5f);
+            hexTransform[i].DOScale(0, .5f);
         }
     }
 
