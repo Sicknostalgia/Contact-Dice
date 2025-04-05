@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb02414cfbb840044b68b1a1ccccfce2, type: 3}
+  m_Name: TextContainer
+  m_EditorClassIdentifier: 
+  Title: Desiderata
+  paragraphs:
+  - Go placidly amid the noise and the haste, and remember what peace there may be
+    in silence.
+  - As far as possible, without surrender, be on good terms with all persons.
+  - Speak your truth quietly and clearly; and listen to others, even to the dull
+    and the ignorant; they too have their story.
+  - If you compare yourself with others, you may become vain or bitter, for always
+    there will be greater and lesser persons than yourself.
+  - Enjoy your achievements as well as your plans.
+  - Keep interested in your own career, however humble; it is a real possession in
+    the changing fortunes of time.

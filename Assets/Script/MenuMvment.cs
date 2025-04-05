@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using DG.Tweening;
 using System.Linq;
 using Ami.BroAudio;
@@ -12,6 +13,7 @@ public class MenuMvment : MonoBehaviour
     int target_Index = -1;
     [SerializeField] float duration;
     [SerializeField] private Ease ease;
+    public UnityEvent onPlace;
     Sequence seq;
     Rigidbody rb;
     // Start is called before the first frame update
@@ -44,7 +46,12 @@ public class MenuMvment : MonoBehaviour
     }
     void DelSeq()
     {
+        OnPlacecEvent();
         StartCoroutine(DelaySeq());
+    }
+    void OnPlacecEvent()
+    {
+        onPlace?.Invoke();
     }
     IEnumerator DelaySeq()
     {

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb02414cfbb840044b68b1a1ccccfce2, type: 3}
   m_Name: Result5
   m_EditorClassIdentifier: 
+  Title: Chismis
   paragraphs:
   - Uy! Alam mo ba yung anu nya kanina umano, sa ano, at ano...
   - "Alam mo nakakatamad minsan gumawa ng ano nu? \nUy pero kahit na ano paman maganda

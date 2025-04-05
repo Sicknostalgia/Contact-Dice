@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb02414cfbb840044b68b1a1ccccfce2, type: 3}
   m_Name: Result2
   m_EditorClassIdentifier: 
+  Title: Dipindi
   paragraphs:
   - Lutang kana naman?
   - Pano yan kahit ako di kita matutulungan.

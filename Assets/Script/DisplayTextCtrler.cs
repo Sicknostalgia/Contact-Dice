@@ -4,6 +4,7 @@ using TMPro;
 
 public class DisplayTextCtrler : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI title;
     [TextArea(5,10)]
     [SerializeField] TEXTSO textPara;
     [SerializeField] TextMeshProUGUI tmPro;
@@ -20,8 +21,10 @@ public class DisplayTextCtrler : MonoBehaviour
         if (textPara != null && textPara.paragraphs.Length > 0) //may laman yung SO tsaka di blanko ang paragraph
         {
             int randomText = Random.Range(0, textPara.paragraphs.Length);
+            title.text = textSO.Title;
             return textSO.paragraphs[randomText];
         }
+        title.text = string.Empty; // clear when no data
         return "No text";
     }
     string ParaValue(FaceCollider.NormalVector normVec)
