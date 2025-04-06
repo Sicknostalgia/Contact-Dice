@@ -14,7 +14,7 @@ public class HexLayout : MonoBehaviour
     {
         //SetDefaultScale();
         FormHexagon();
-        ForSquare();
+       // ForSquare();
         RewindTime.onPlace += FormHexagon;
         RewindTime.notOnPlace += Scatter;
     }
@@ -38,24 +38,32 @@ public class HexLayout : MonoBehaviour
         }
 
     }
-    void ForSquare()
+ /*   void ForSquare()
     {
-        if (squareTransform.Length <= 1)
+        if (squareTransform.Length < 4)
         {
-            Debug.Log("Less than one");
+            Debug.Log("Need at least 4 objects to form a square.");
             return;
         }
-        for (int i = 0; i < squareTransform.Length; i++)
+
+        float halfSize = radius;
+
+        Vector3[] offsets = new Vector3[]
         {
-            float angle = i * 90 * Mathf.Deg2Rad;
+        new Vector3(-halfSize, 0, -halfSize), // Bottom Left
+        new Vector3(-halfSize, 0, halfSize),  // Top Left
+        new Vector3(halfSize, 0, halfSize),   // Top Right
+        new Vector3(halfSize, 0, -halfSize)   // Bottom Right
+        };
 
-            Vector3 pos = new Vector3(foundation.position.x + Mathf.Cos(angle) * radius, foundation.position.y,
-                foundation.position.z + Mathf.Sin(angle) * radius);
-
+        for (int i = 0; i < 4; i++)
+        {
+            Vector3 pos = foundation.position + offsets[i];
             squareTransform[i].position = pos;
             squareTransform[i].DOScale(1, .5f).SetEase(ease);
         }
-    }
+    }*/
+
     private void Update() //looking to camera anytime
     {
         for (int i = 0; i < hexTransform.Length; i++)
