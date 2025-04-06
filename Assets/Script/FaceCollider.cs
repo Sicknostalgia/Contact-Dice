@@ -245,7 +245,7 @@ public class FaceCollider : MonoBehaviour
 
         return NormalVector.Unknown;
     }
-    void OnDrawGizmos()
+ /*   void OnDrawGizmos()
     {
         DrawGizmoArrow(transform.position, transform.right, Color.red, "Right (+X)");
         DrawGizmoArrow(transform.position, -transform.right, Color.red, "Left (-X)");
@@ -274,7 +274,7 @@ public class FaceCollider : MonoBehaviour
         GUIStyle style = new GUIStyle();
         style.normal.textColor = color;
         UnityEditor.Handles.Label(end, label, style);
-    }
+    }*/
     /*    private bool hasResult = false;
         public void ToggleHasResult()  //off on
         {
