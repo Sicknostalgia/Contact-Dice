@@ -30,9 +30,12 @@ public class RewindTime : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!isRewinding)
+        if (rb.linearVelocity.magnitude != 0)
         {
+            if (!isRewinding)
+            {
             Record();
+            }
         }
     }
 
