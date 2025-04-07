@@ -51,7 +51,7 @@ public class RewindTime : MonoBehaviour
             transform.rotation = pointIT.rotation;
 
             pointsInTime.RemoveAt(0);
-            yield return new WaitForSeconds(.001f);
+            yield return new WaitForFixedUpdate();
         }
         StopRewind();
     }
