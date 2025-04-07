@@ -14,17 +14,11 @@ public class FaceCollider : MonoBehaviour
     private Vector3 hitNormal;
     private bool hitDetected = false;
     public LayerMask groundLayer;
-    //public UnityEvent<int> OnDiceValue;  //int is just argument
-
-
-    // public UnityEvent<string> OnFaceDetected;
     [Header("Cameras")]
     public CinemachineFreeLook thirdPerson;
     public CinemachineVirtualCamera topdownCam;
-
     [Header("OtherReferences")]
     public RewindTime rewindTime;
-   // public NumberCounter numberCounter;
     public NormalVector normVec;
     [SerializeField] DisplayTextCtrler disCtrlr;
     [SerializeField] GameObject decalsObj;
@@ -32,7 +26,6 @@ public class FaceCollider : MonoBehaviour
     public GameObject panel;
     public FollowWho followWHo;
     private Rigidbody rb;
-
     [Header("Textures and Buttons")]
     public Texture2D Texture2DRight;
     public Texture2D Texture2DLeft;
@@ -41,7 +34,6 @@ public class FaceCollider : MonoBehaviour
     public Texture2D Texture2DFront;
     public Texture2D Texture2DBack;
     public Button[] ButGroup;
-
     [Header("DOTweening")]
     private float punchCD = .2f;
     private float lastPunchtime = 0;
@@ -49,7 +41,6 @@ public class FaceCollider : MonoBehaviour
     public Vector3 originalScale;
     Vector3 originalPos;
     public Ease ease;
-
     public enum NormalVector
     {
         right,
@@ -107,26 +98,6 @@ public class FaceCollider : MonoBehaviour
             button.transform.DOScale(1, 0.5f).SetEase(Ease.OutBounce);
         }
     }
-    /*public int NumEnumChange(NormalVector normVec)
-    {
-        switch (normVec)
-        {
-            case NormalVector.right:
-                return 3;
-            case NormalVector.left:
-                return 4;
-            case NormalVector.front:
-                return 2;
-            case NormalVector.back:
-                return 5;
-            case NormalVector.top:
-                return 6;
-            case NormalVector.bottom:
-                return 1;
-            default: return 0;
-                
-        }
-    }*/
     public int NumEnumChange(NormalVector normVec)
     {
         switch (normVec)
@@ -155,21 +126,18 @@ public class FaceCollider : MonoBehaviour
         hitNormal = contact.normal;
         hitDetected = true;
 
-        NormalVector face = GetColliderFace(hitNormal, transform); //this calculate the final normal vector result, failed to reference this wont change your value on the following line
+        NormalVector face = GetColliderFace(hitNormal, transform); 
         Debug.Log(face);
         Vector3 faceDirection = GetFaceDirection(face);
-       // numberCounter.Value = NumEnumChange(face);  //update value of dice number on UI
         butcor = GetButton(face);
 
         BtnReact();
         VFXImpactTex(faceDirection, face);
         CameraShakeEvent.TriggerShake(1, .25f);
-        //  ObjctPlTrnsfrm.SpawnObject(decalsObj, centerOfFace, Quaternion.identity);
     }
 
     void BtnReact()
     {
-        //refactor
         if (butcor != null)
         {
             if (Time.time - lastPunchtime < punchCD) return;
@@ -203,21 +171,6 @@ public class FaceCollider : MonoBehaviour
         return faceTex.TryGetValue(face, out Texture2D texture2D) ? texture2D : null;
     }
 
-    /*    void DetectFace()
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                hitPoint = hit.point;
-                hitNormal = hit.normal;
-                hitDetected = true;
-
-                NormalVector face = GetColliderFace(hit.normal, transform);
-                Debug.Log("Hit face: " + face);
-            }
-        }*/
     Vector3 GetFaceDirection(NormalVector norm)
     {
         switch (norm)
@@ -245,42 +198,6 @@ public class FaceCollider : MonoBehaviour
 
         return NormalVector.Unknown;
     }
- /*   void OnDrawGizmos()
-    {
-        DrawGizmoArrow(transform.position, transform.right, Color.red, "Right (+X)");
-        DrawGizmoArrow(transform.position, -transform.right, Color.red, "Left (-X)");
-
-        DrawGizmoArrow(transform.position, transform.up, Color.green, "Top (+Y)");
-        DrawGizmoArrow(transform.position, -transform.up, Color.green, "Bottom (-Y)");
-
-        DrawGizmoArrow(transform.position, transform.forward, Color.blue, "Front (+Z)");
-        DrawGizmoArrow(transform.position, -transform.forward, Color.blue, "Back (-Z)");
-    }
-    private void DrawGizmoArrow(Vector3 start, Vector3 direction, Color color, string label)
-    {
-        Gizmos.color = color;
-        Vector3 end = start + direction * 1.5f; // Scale the arrow length
-
-        // Draw the main line
-        Gizmos.DrawLine(start, end);
-
-        // Draw arrowhead
-        Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 150, 0) * Vector3.forward;
-        Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -150, 0) * Vector3.forward;
-        Gizmos.DrawLine(end, end + right * 0.3f);
-        Gizmos.DrawLine(end, end + left * 0.3f);
-
-        // Draw label
-        GUIStyle style = new GUIStyle();
-        style.normal.textColor = color;
-        UnityEditor.Handles.Label(end, label, style);
-    }*/
-    /*    private bool hasResult = false;
-        public void ToggleHasResult()  //off on
-        {
-            hasResult = !hasResult;
-        }*/
-
     bool isAboveThreshold()
     {
         return transform.position.y > originalPos.y - 2;
@@ -289,43 +206,25 @@ public class FaceCollider : MonoBehaviour
     {
         if (rb.linearVelocity.magnitude == 0 && !hasResult)
         {
-            /*isAboveThreshold = transform.position.y >= originalPos.y - 2;*/
             if (!isAboveThreshold())
             {
                 hasResult = true;
                 thirdPerson.gameObject.SetActive(false);
                 NormalVector face = GetColliderFace(hitNormal, transform);
-               // numberCounter.Value = NumEnumChange(face);  //equivalent to face
                ButDicDisappear();
                 Debug.Log(GetFaceDirection(face));
                 disCtrlr.UpdatePara(face);
                 panel.SetActive(true);
                 followWHo.Assigned();
                 Debug.Log(followWHo.gameObject.transform);
-                //here dialogue final value
-                //disCtrlr.ParagraphUpdate(face);
             }
         }
-        /* if (rb.linearVelocity.magnitude > 0)
-         {
-             hasResult = false;
-         }*/
-        /*        DrawArrow(transform.position, transform.right, Color.red);   // Right (+X)
-                DrawArrow(transform.position, -transform.right, Color.red);  // Left (-X)
-                DrawArrow(transform.position, transform.up, Color.green);    // Top (+Y)
-                DrawArrow(transform.position, -transform.up, Color.green);   // Bottom (-Y)
-                DrawArrow(transform.position, transform.forward, Color.blue);// Front (+Z)
-                DrawArrow(transform.position, -transform.forward, Color.blue);// Back (-Z)*/
     }
 
     private void DrawArrow(Vector3 start, Vector3 direction, Color color)
     {
-        Vector3 end = start + direction * 1.5f; // Adjust arrow length
-
-        // Draw main line
+        Vector3 end = start + direction * 1.5f;
         Debug.DrawLine(start, end, color);
-
-        // Draw arrowhead
         Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 150, 0) * Vector3.forward;
         Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, -150, 0) * Vector3.forward;
         Debug.DrawLine(end, end + right * 0.3f, color);

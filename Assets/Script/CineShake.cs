@@ -48,7 +48,6 @@ public class CineShake : MonoBehaviour
 
     private void SetShakeIntensity(float intensity)
     {
-        // Apply shake to all three rigs
         for (int i = 0; i < 3; i++)
         {
             CinemachineBasicMultiChannelPerlin noise = cFreeLook.GetRig(i).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();

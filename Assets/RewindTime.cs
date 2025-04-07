@@ -15,12 +15,6 @@ public class RewindTime : MonoBehaviour
     public MenuMvment menuMvmnt;
     [SerializeField] FaceCollider faceCol;
     [SerializeField] CinemachineFreeLook freeLook;
-
-    // public CineShake cineShake;
-
-    /// <summary>
-    /// Observe Pattern for more scalable event sytem
-    /// </summary>
     public static event Action onPlace;
     public static event Action notOnPlace;
     void Start()
@@ -39,24 +33,15 @@ public class RewindTime : MonoBehaviour
         }
     }
 
-    public static void TrigOnPlace() //placing event to this make it scalable
+    public static void TrigOnPlace()
     {
         onPlace?.Invoke();
 
     }
-    public static void TrigNotOnPlace() //placing event to this make it scalable
+    public static void TrigNotOnPlace()
     {
         notOnPlace?.Invoke();
     }
-
-    private void Update()
-    {
-        /*   if (Input.GetKey(KeyCode.Space))
-           {
-               Rewind();
-           }*/
-    }
-
     IEnumerator Rewind()
     {
         while (pointsInTime.Count > 0)
@@ -65,7 +50,7 @@ public class RewindTime : MonoBehaviour
             transform.position = pointIT.position;
             transform.rotation = pointIT.rotation;
 
-            pointsInTime.RemoveAt(0);  //remove right after...
+            pointsInTime.RemoveAt(0);
             yield return new WaitForSeconds(.001f);
         }
         StopRewind();
@@ -74,7 +59,6 @@ public class RewindTime : MonoBehaviour
     void Record()
     {
         pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
-        /*        audioinTime.Insert(0, new PointInTimeAudio(cineShake.collisionSound));*/
     }
 
     public void StartRewind()
@@ -89,15 +73,8 @@ public class RewindTime : MonoBehaviour
         HoverOverPlayer.isPlaying = false;
         isRewinding = false;
         rb.isKinematic = false;
-        /*        if (transform.position.y >= originalPos.y - 2)  //above OnPlace
-                {*/
-        menuMvmnt.RunSequence();  // we can't put this on isRewinding since it needs to trigger once
+        menuMvmnt.RunSequence();
         freeLook.gameObject.SetActive(false);
         TrigOnPlace();
-        /*}*/
-        /*     else
-             {
-                 TrigNotOnPlace();
-             }*/
     }
 }

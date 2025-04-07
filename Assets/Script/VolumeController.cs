@@ -9,7 +9,6 @@ public class VolumeController : MonoBehaviour
     public Image[] volumeBars;
     public float volume = 0.5f;
     private float step = 1f / 8f;
-    //    [SerializeField] SoundManagerSO soundManagerSO;
     public enum AudioType
     {
         Master,
@@ -17,7 +16,7 @@ public class VolumeController : MonoBehaviour
         Sfx,
         Ambient
     }
-    [SerializeField] private AudioType audioType = AudioType.Master; // Select the audio type for this controller
+    [SerializeField] private AudioType audioType = AudioType.Master;
     private void Start()
     {
         UpdateVolumeBars();
@@ -42,7 +41,7 @@ public class VolumeController : MonoBehaviour
         {
             if (i < activeBars)
             {
-                volumeBars[i].color = new Color(247 / 255f, 230 / 255f, 178 / 255f);  //custom grey  r/a,g/a,b/a
+                volumeBars[i].color = new Color(247 / 255f, 230 / 255f, 178 / 255f);
             }
             else
             {
@@ -54,7 +53,7 @@ public class VolumeController : MonoBehaviour
     {
         switch (audioType)
         {
-            case AudioType.Master:     //enum = master
+            case AudioType.Master:
                 AudioListener.volume = volume;
                 break;
             case AudioType.Music:
@@ -68,11 +67,6 @@ public class VolumeController : MonoBehaviour
                 break;
 
         }
-        // BroAudio.SetVolume 
-        /*     if (soundManagerSO != null)
-             {
-                 soundManagerSO.GlobalVolume = volume;
-             }*/
     }
 
 }

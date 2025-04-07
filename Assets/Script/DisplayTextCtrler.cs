@@ -18,13 +18,13 @@ public class DisplayTextCtrler : MonoBehaviour
     string ReturnRandomPara(TEXTSO textSO)
     {
         tmPro.text = string.Empty;
-        if (textPara != null && textPara.paragraphs.Length > 0) //may laman yung SO tsaka di blanko ang paragraph
+        if (textPara != null && textPara.paragraphs.Length > 0)
         {
             int randomText = Random.Range(0, textPara.paragraphs.Length);
             title.text = textSO.Title;
             return textSO.paragraphs[randomText];
         }
-        title.text = string.Empty; // clear when no data
+        title.text = string.Empty;
         return "No text";
     }
     string ParaValue(FaceCollider.NormalVector normVec)
@@ -47,10 +47,4 @@ public class DisplayTextCtrler : MonoBehaviour
                 return null;
         }
     }
-
-
-    /*private TEXTSO GetTextSOValue(FaceCollider.NormalVector face)
-    {
-        return faceCol.faceTex.TryGetValue(face, out TEXTSO textDisplay) ? textDisplay : null;
-    }*/
 }

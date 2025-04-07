@@ -8,7 +8,6 @@ public class FollowWho : MonoBehaviour
     [SerializeField] Vector3 offset;
     CinemachineVirtualCamera topDownVirt;
     public Transform origTrans;
-/*    public static bool hasAssigned = true;*/
     private void Start()
     {
         RewindTime.onPlace += DeAssigned;
@@ -17,26 +16,13 @@ public class FollowWho : MonoBehaviour
         origTrans.rotation = transform.rotation;
         TryGetComponent<CinemachineVirtualCamera>(out topDownVirt);
     }
-    private void Update()
-    {
-/*
-        if (hasAssigned)
-        {
-            DeAssigned();
-            hasAssigned = false;
-        }*/
-
-    }
     
     public void InitializePos()
     {
         transform.position = diceTrans.position + offset;
     }
-    void Back() { 
-    }
     public void DeAssigned()
     {
-        //follow player + offset 
         topDownVirt.Follow = null;
         topDownVirt.LookAt = null;
 

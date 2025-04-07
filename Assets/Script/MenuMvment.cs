@@ -16,7 +16,6 @@ public class MenuMvment : MonoBehaviour
     public UnityEvent onPlace;
     Sequence seq;
     Rigidbody rb;
-    // Start is called before the first frame update
     void Start()
     {
         RewindTime.onPlace += DelSeq;
@@ -27,16 +26,15 @@ public class MenuMvment : MonoBehaviour
 
     void ShuffleTarg()
     {
-        shufTar = new List<Transform>(targets); //public List(IEnumerable<T> collection);
+        shufTar = new List<Transform>(targets);
         for (int i = 0; i < shufTar.Count; i++)
         {
             int rndmIndx = Random.Range(i, shufTar.Count);
-            // tuple deconstruction C#7.0
             (shufTar[i], shufTar[rndmIndx]) = (shufTar[rndmIndx], shufTar[i]);
         }
     }
 
-    Vector3 RandRot() //method return type
+    Vector3 RandRot()
     {
         return new Vector3(
             Random.Range(0, 360),
@@ -70,23 +68,18 @@ public class MenuMvment : MonoBehaviour
         }
 
         seq = DOTween.Sequence();
-     /*   seq.AppendInterval(1);*/
         seq.Append(transform.DOMove(shufTar[target_Index].position + new Vector3(0, 1, 0), duration).SetEase(ease)).OnStepComplete(() => OnReachedTarget(target_Index));
         seq.Join(transform.DORotate(RandRot(), duration).SetEase(ease));
         seq.OnComplete(RunSequence);
     }
-    void OnReachedTarget(int index)  //when player traverse to specific words in menu
+    void OnReachedTarget(int index)
     {
         Debug.Log("Reached target index: " + index);
-
-        // Get the child of the target transform
-        Transform child = shufTar[index].GetChild(0); // Assuming it has at least one child
+        Transform child = shufTar[index].GetChild(0);
         if (child == null) return;
-
-        // Apply a shake effect to the child (glitch effect)
         child.DOShakePosition(0.5f, strength: 0.2f, vibrato: 20, randomness: 90);
         child.DOShakeRotation(0.5f, strength: new Vector3(0, 0, 10), vibrato: 10, randomness: 90);
-        child.DOPunchScale(Vector3.one * 0.2f, 0.3f, 10, 1); // Quick scale punch
+        child.DOPunchScale(Vector3.one * 0.2f, 0.3f, 10, 1);
         BroAudio.Play(boinkSnd);
     }
 

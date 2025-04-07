@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CameraShakeEvent : MonoBehaviour  //can call anywhere in game
+public class CameraShakeEvent : MonoBehaviour
 {
     public static event Action<float, float> OnShake;
 

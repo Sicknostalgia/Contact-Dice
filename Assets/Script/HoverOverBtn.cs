@@ -9,17 +9,13 @@ public class HoverOverBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private Vector3 defaultScale = new Vector3(1,1,1);
     public Ease easeType;
     public bool isHovered = false;
-    private Button button;   //menu buttons
+    private Button button;
     private void Awake()
     {
-      //  SetDefaultScale();
+
         button = GetComponent<Button>();
     }
 
-/*    public void SetDefaultScale()
-    {
-        defaultScale = transform.localScale;
-    }*/
     public void OnPointerClick(PointerEventData eventData)
     {
         transform.localScale = defaultScale;
