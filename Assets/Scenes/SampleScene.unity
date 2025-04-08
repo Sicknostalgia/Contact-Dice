@@ -94,7 +94,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: d77030695d0487542ac6e57f1834bc11,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: dd2cf96e8fd2b204ba12dfefd1b298d6,
     type: 2}
 --- !u!196 &4
@@ -2210,8 +2211,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 5000
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.16252264e+33, y: 1.5763445e+13, z: 1.8754504e+28,
-    w: 9.314623e-39}
+  m_BoundingSphereOverride: {x: 1.5407638e-33, y: 1.680362e-24, z: 3.7286822e-29,
+    w: 9.4722e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
