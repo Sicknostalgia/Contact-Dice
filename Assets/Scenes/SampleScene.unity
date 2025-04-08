@@ -722,49 +722,6 @@ Transform:
   - {fileID: 591908671}
   m_Father: {fileID: 1936621315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &82293838
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 82293840}
-  - component: {fileID: 82293839}
-  m_Layer: 0
-  m_Name: Occlusion Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!192 &82293839
-OcclusionArea:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82293838}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
-  m_IsViewVolume: 1
---- !u!4 &82293840
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82293838}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 222.2, y: 0, z: 76.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &92421475 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1789537513849430769, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
@@ -1814,7 +1771,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 20.797182
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -6955,7 +6912,7 @@ PrefabInstance:
     - target: {fileID: 2039480314392371069, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 16
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2124804145276378423, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
@@ -6975,7 +6932,7 @@ PrefabInstance:
     - target: {fileID: 2241375636965278836, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2249399539352914805, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
@@ -7015,7 +6972,7 @@ PrefabInstance:
     - target: {fileID: 2463652350542562145, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 46
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 2467176733691330952, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
@@ -7054,6 +7011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151819006002188940, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151819006002188940, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 46
       objectReference: {fileID: 0}
@@ -7085,7 +7047,7 @@ PrefabInstance:
     - target: {fileID: 3707189650658232897, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 3726337032958039077, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
@@ -7250,7 +7212,7 @@ PrefabInstance:
     - target: {fileID: 5759741703560316656, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5772609874074267680, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
@@ -7410,7 +7372,7 @@ PrefabInstance:
     - target: {fileID: 8151049968930185328, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 16
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8190167412877610171, guid: 4d4ed9e1fe1c34643b1bc9cd0b9e0ac6,
         type: 3}
@@ -14841,4 +14803,3 @@ SceneRoots:
   - {fileID: 1360395665}
   - {fileID: 1807550142}
   - {fileID: 1207156782}
-  - {fileID: 82293840}
