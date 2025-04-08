@@ -1737,6 +1737,7 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   - component: {fileID: 330585549}
+  - component: {fileID: 330585550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1912,6 +1913,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   m_MaxRayIntersections: 0
+--- !u!114 &330585550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385ffc06106304cc3824d5bcf25a7037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onlyPlayOnce: 0
+  _playOnEnable: 1
+  _stopOnDisable: 0
+  _overrideFadeOut: -1
+  _sound:
+    ID: 268435456
+    _sourceAsset: {fileID: 11400000, guid: 69a9d3c1875e8454a8a27644e99a1c47, type: 2}
+    <DebugObject>k__BackingField: {fileID: 330585543}
+  _positionMode: 0
 --- !u!1 &334235435
 GameObject:
   m_ObjectHideFlags: 0
@@ -4706,13 +4728,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 963349115}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 963349123}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Quitt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7581,8 +7603,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.82290995, y: 1.8236465, z: 0.811538}
-  m_Center: {x: 0.010525703, y: 0.040399075, z: -0.004433453}
+  m_Size: {x: 0.69133157, y: 1.6188495, z: 0.811538}
+  m_Center: {x: 0.010525703, y: -0.6094965, z: -0.0044334335}
 --- !u!114 &1227798071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9656,7 +9678,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 1
+  - screenRelativeHeight: 0.999
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2109866359}
@@ -9771,7 +9793,7 @@ LODGroup:
     - renderer: {fileID: 1023548749}
     - renderer: {fileID: 1612152832}
     - renderer: {fileID: 1566610031}
-  - screenRelativeHeight: 0.60253346
+  - screenRelativeHeight: 0.8970425
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2109866359}
